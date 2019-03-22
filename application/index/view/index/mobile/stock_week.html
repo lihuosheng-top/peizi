@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="__STATIC__/stock/css/weui.min.css">
+    <link rel="stylesheet" href="__STATIC__/stock/css/common.css">
+    <script src="__STATIC__/stock/js/jquery.min.js"></script>
+    <script src="__STATIC__/stock/js/weui.js"></script>
+    <script src="__STATIC__/stock/js/vue.min.js"></script>
+    <script src="__STATIC__/stock/js/common.js"></script>
+
+    <title>按周配资</title>
+</head>
+
+<body class="page-with-footbar">
+<div id="app">
+    <div class="v-header">
+        <div class="v-header-left"> <div class="left-arrow"></div> </div>
+        <h1 class="v-header-title">按周配资</h1>
+    </div>
+    <div class="weui-tab mod-products">
+        <div class="weui-navbar">
+            <!--     <div class="weui-navbar__item   ">
+                    <a href="/stock/trial">免费体验</a>
+                </div> -->
+            <div class="weui-navbar__item  ">
+                <a href="{:url('index/Stock/stock_free')}">免息配资</a>
+            </div>
+            <div class="weui-navbar__item  ">
+                <a href="{:url('index/Stock/stock_day')}">按天配资  </a>
+            </div>
+            <div class="weui-navbar__item  weui-bar__item_on ">
+                <a href="{:url('index/Stock/stock_week')}">按周配资  </a>
+            </div>
+            <div class="weui-navbar__item  ">
+                <a href="{:url('index/Stock/stock_month')}">按月配资</a>
+            </div>
+        </div>
+        <div class="weui-tab__panel">
+            <div class=" mod-product-item">
+                <div class="title">
+                    <i class="icon icon-computer"></i>时间长，利率低，适合长线操盘
+                </div>
+                <div class="main-section">
+                    <div class="main-txt">
+                        <span class="txt-important">0.30</span>
+                        <span class="units">
+                            %
+                        </span>
+                    </div>
+                    <div class="txt">最低利率</div>
+                </div>
+                <div class="rules" v-cloak>
+                    最高可操盘
+                    <span class="tags">1500.00万元 </span>
+                    起配资金
+                    <span class="tags">100元</span>
+                </div>
+            </div>
+        </div>
+        <div class="stock-form">
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell "> <!-- weui-cell_warn -->
+                    <div class="weui-cell__hd"><label class="weui-label">保证金</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="number" v-model="depositMoney" placeholder="介于 100 - 1500.00万之间" v-cloak>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <i class="weui-icon-warn"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells">
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd">
+                        <label for="" class="weui-label">杠杆率</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="multiple"  v-model="multiple" id="multiple" @change="calcRate">
+                            <option value="" disabled selected>介于1-10倍之间</option>
+                            <option value="1" data-rate="0.50">1倍</option><option value="2" data-rate="0.50">2倍</option><option value="3" data-rate="0.45">3倍</option><option value="4" data-rate="0.45">4倍</option><option value="5" data-rate="0.40">5倍</option><option value="6" data-rate="0.40">6倍</option><option value="7" data-rate="0.35">7倍</option><option value="8" data-rate="0.35">8倍</option><option value="9" data-rate="0.325">9倍</option><option value="10" data-rate="0.30">10倍</option>                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-cells">
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd">
+                        <label for="" class="weui-label">操盘期限</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="duration" v-model="duration" id="duration">
+                            <option value="" disabled selected>介于1 - 10个周之间</option>
+                            <option value="1">1周</option><option value="2">2周</option><option value="3">3周</option><option value="4">4周</option><option value="5">5周</option><option value="6">6周</option><option value="7">7周</option><option value="8">8周</option><option value="9">9周</option><option value="10">10周</option>                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-cells__title">资金明细</div>
+
+            <div class="weui-cell">
+                <label class="weui-label">周利息</label>
+                <div class="weui-cell__bd">
+                    <div class="weui-cell__container">
+                        <div class="num-xxl">
+                            <span>{{rateMoney}}</span>
+                            元
+                        </div>
+                        <div class="formula">
+                            <span>{{depositMoney}} X {{multiple}} X {{rate}}%</span>
+                            (利息先付后用)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <label class="weui-label">总操盘金额</label>
+                <div class="weui-cell__bd">
+                    <div class="weui-cell__container">
+                        <div class="num-xxl">
+                            <span>{{totalMoney}}</span>
+                            元
+                        </div>
+                        <div class="formula">保证金 + 获得资金</div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <label class="weui-label">准备资金</label>
+                <div class="weui-cell__bd">
+                    <div class="weui-cell__container">
+                        <div class="num-xxl">
+                            <span>{{needMoney}}</span>
+                            元
+                        </div>
+                        <div class="formula">{{depositMoney}}保证金 + {{rateMoney}}元利息</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-cells__title">操盘规则</div>
+
+            <div class="weui-cell">
+                <label class="weui-label">预警线</label>
+                <div class="weui-cell__bd">
+                    <p>
+                        <span>{{warnLine}}</span>
+                        元
+                    </p>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <label class="weui-label">平仓线</label>
+                <div class="weui-cell__bd">
+                    <p>
+                        <span>{{lossLine}}</span>
+                        元
+                    </p>
+                </div>
+            </div>
+
+            <div class="weui-cells">
+                <div class="weui-cell weui-cell_select weui-cell_select-after">
+                    <div class="weui-cell__hd">
+                        <label for="" class="weui-label">交易时间</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <select class="weui-select" name="startDate"  v-model="startDate">
+                            <option value="2" selected>下个交易日</option>                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <label for="weuiAgree" class="weui-agree">
+                <input id="weuiAgree" type="checkbox" v-model="agreeCheck" class="weui-agree__checkbox">
+                <span class="weui-agree__text">
+                    阅读并同意<a href="/member/hetong" target="_blank">《配资相关条款》</a>
+                </span>
+            </label>
+            <div class="block-btn-wrapper">
+                <a @click="apply" class="weui-btn weui-btn_primary">立即申请</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="weui-tabbar weui-tabbar__fixed">
+
+</div>
+
+<!--按周的利息返回的数据-->
+<script>
+    (function () {
+        $.ajax({
+            url: '{:url("index/Stock/stock_week_return")}',
+            type: 'POST',
+            dataType: 'JSON',
+            async: false,
+            data: {
+
+            },
+            success: function(data){
+                console.log(data);
+            },
+            error: function(data){
+                console.log('失败');
+
+            }
+        })
+    })()
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+
+    var minDepositeMoney = 100;
+    new Vue({
+        el: "#app",
+        data: {
+            multiple: 1,
+            depositMoney: minDepositeMoney,
+            duration: 1,
+            startDate: 2,
+            rate : 0.50, //利率
+            agreeCheck : true,
+            type : 4 //配资类型 2 按月配资 4按周
+        },
+        computed: {
+            warnLine: function () {
+                // 保证金 X (杠杆 + 0.5)
+                return parseInt( +this.depositMoney * ( parseInt(this.multiple) + 50 / 100));
+            },
+            lossLine: function () {
+                // 保证金 X (杠杆 + 0.3)
+                return parseInt( +this.depositMoney * ( parseInt(this.multiple) + 20 / 100));
+            },
+            totalMoney: function () {
+                //总操盘 保证金 X ( 杠杆 + 1 )
+                return parseInt( +this.depositMoney * ( parseInt(this.multiple) + 1));
+            },
+            rateMoney : function () {
+
+                return +(this.rate * this.depositMoney * this.multiple  / 100).toFixed(2);
+            },
+            needMoney : function () {
+                return +this.depositMoney + this.rateMoney;
+            },
+            orderUrl: function(){
+                return  "/stock/order?depositMoney=" + this.depositMoney + "&multiple=" + this.multiple + "&type=" + this.type + "&duration=" + this.duration + "&startDate=" + this.startDate;
+            }
+        },
+        methods: {
+            calcRate : function (el) {
+                this.rate = $(el.srcElement).find("option:selected").data('rate');
+            },
+            apply: function () {
+                if(!this.agreeCheck) return weui.topTips("请阅读并同意配资相关条款");
+                var formData = {
+                    multiple: this.multiple,
+                    depositMoney: this.depositMoney
+                };
+                $.post('/stock/order', formData, function (data) {
+                    if (data.status == 0) {
+                        weui.topTips(data.message);
+                    } else {
+                        window.location.href = "http://m.bspeizi.com"+this.orderUrl
+                    }
+                }.bind(this), 'json');
+
+            }
+        }
+    })
+
+</script>
+</body>
+
+</html>

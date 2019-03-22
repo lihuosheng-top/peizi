@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/css/index_information.css" />
+	</head>
+
+	<body>
+
+		<div class="pz-day-content">
+			<div class="pz-day-public pzdaymoney">
+				<h2>保证金</h2>
+				<input type="text" id="deposite_money" value="200"/>
+			</div>
+			<div class="pz-day-public pzdaytimes">
+				<h2>选择杠杆率</h2>
+				<div class="pz-select">
+					<div class="nav_listdown" id="nav_listdown">
+						<p class="set_listdown" id="beilv"><span class="j-num" id="num">3</span>倍</p>
+						<ul class="new_listdown">
+							<!--<li class="j-multiple-item" data-id="1" >-->
+								<!--<span class="multiple">1</span>倍-->
+							<!--</li>-->
+							<!--<li class="j-multiple-item" data-id="2" >-->
+								<!--<span class="multiple">2</span>倍-->
+							<!--</li>-->
+							<li class="j-multiple-item" data-id="3" >
+								<span class="multiple">3</span>倍
+							</li>
+							<li class="j-multiple-item" data-id="4" >
+								<span class="multiple">4</span>倍
+							</li>
+							<li class="j-multiple-item" data-id="5" >
+								<span class="multiple">5</span>倍
+							</li>
+							<li class="j-multiple-item" data-id="6" >
+								<span class="multiple">6</span>倍
+							</li>
+							<li class="j-multiple-item" data-id="7" >
+								<span class="multiple">7</span>倍
+							</li>
+							<li class="j-multiple-item" data-id="8" >
+								<span class="multiple">8</span>倍
+							</li>
+							<li class="j-multiple-item" data-id="9" >
+								<span class="multiple">9</span>倍
+							</li>
+							<li class="j-multiple-item" data-id="10" >
+								<span class="multiple">10</span>倍
+							</li>
+						</ul>
+						<input type="hidden" id="multiple" value="2">
+					</div>
+				</div>
+			</div>
+			<div class="pz-day-public pzdaynumber">
+				<h2>我需要操盘的天数？</h2>
+				<div class="pz-select">
+					<div class="nav_listdown" id="nav_listdown2">
+						<p class="set_listdown" id="day"><span class="j-num" id="num_day">1</span>天</p>
+						<ul class="new_listdown">
+							<li class="j-duration-item" data-duration="1"><span>1</span>天</li>
+							<li class="j-duration-item" data-duration="2"><span>2</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>3</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>4</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>5</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>6</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>7</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>8</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>9</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>10</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>11</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>12</span>天</li>
+							<li class="j-duration-item" data-duration="2"><span>13</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>14</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>15</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>16</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>17</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>18</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>19</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>20</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>21</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>22</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>23</span>天</li>
+							<li class="j-duration-item" data-duration="2"><span>24</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>25</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>26</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>27</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>28</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>29</span>天</li>
+							<li class="j-duration-item" data-duration="3"><span>30</span>天</li>
+
+						</ul>
+					</div>
+					<input type="hidden" id="use_data" value="">
+				</div>
+			</div>
+		</div>
+		<div class="pz-day-content1">
+			<h2>您需要准备的资金：</h2>
+			<div class="pz-detail-count">
+				<div class="pz-day-bond">
+					<h3><span id="deposit_money">200</span>元</h3>
+					<p>保证金</p>
+				</div>
+				<div style="position:absolute;margin-left: 265px;margin-top: 40px;"><img src="img/plus.png" width="28" height="28"></div>
+				<div class="pz-day-bond">
+					<h3><span id="rateFee">{$res_bei}</span>元</h3>
+					<p>日利息（元）*天数</p>
+				</div>
+				<div style="position:absolute;margin-left: 630px;margin-top: 40px;"><img src="img/equal.png" width="30" height="28"></div>
+				<div class="pz-day-bond" style="margin-right:0px;">
+					<h3><span id="borrow_fee">{$res_money}</span>元</h3>
+					<p>准备资金（元）</p>
+				</div>
+			</div>
+		</div>
+		<div class="pz-day-form">
+			<table>
+				<tbody>
+					<tr>
+						<td style="background-color:#fcfcfc;">总操盘资金：</td>
+						<td width="300" style="background-color:#fcfcfc;">
+							<div style="width:250px; margin:0 auto 0 16px;"><span id="total_money">600</span>元</div>
+						</td>
+						<td>获得资金</td>
+						<td><span id="gain_money">600</span>元</td>
+					</tr>
+					<tr>
+						<td style="background-color:#fcfcfc;">亏损警戒线：</td>
+						<td width="300" style="background-color:#fcfcfc;">
+							<span id="loss_warn">-{$cordon_line}</span>元
+							<br>
+							<span class="explain">(获得资金 + 保证金 X 0.5 )</span>
+						</td>
+						<td>亏损平仓线：</td>
+						<td>
+							<span id="loss_close">-{$loss_line}</span>元
+							<br>
+							<span class="explain">(获得资金 + 保证金 X 0.2 )</span>
+						</td>
+					</tr>
+					<tr>
+						<!--<td>资金天利率</td>-->
+						<!--<td><span id="RateValue">0.1</span>%</td>-->
+
+						<!--<td>资金天利率</td>-->
+						<!--<td><span id="RateValue">0.1</span>%</td>-->
+						<td>资金使用期：</td>
+						<td><span id="duration">1</span>天</td>
+					</tr>
+					<tr>
+						<td style="background-color:#fcfcfc;">交易时间:</td>
+						<td colspan="3">
+							<label><input type="radio" name="dealtime" class="start-date" value="1" checked="checked"> 今日</label>
+							<!--<label><input type="radio" name="dealtime" class="start-date" value="2"> 下个交易日</label> </td>-->
+					</tr>
+					<tr>
+						<td>操盘须知</td>
+						<td colspan="3">投资沪深A股，<span class="position">仓位不限制</span>，收益全归您。</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="pz-agmt-btn">
+			<label>
+                <input type="checkbox" checked="checked" id="agreementCheckbox"> 我已阅读并同意
+                <a style="color:#f00;" target="_blank" href="{:url('index/index/EntrustmentAgreement')}">《尚牛在线操盘协议》</a>
+            </label>
+			<a class="pz-me" onclick="applyFinancingQy()">我要配资</a>
+		</div>
+		<script type="text/javascript">
+			//按天杠杆倍率1到10倍
+//			var levers_1 = parseFloat("{$levers_1}");
+//			var levers_2 = parseFloat("{$levers_2}");
+			var levers_3 = parseFloat("{$levers_3}");
+			var levers_4 = parseFloat("{$levers_4}");
+			var levers_5 = parseFloat("{$levers_5}");
+			var levers_6 = parseFloat("{$levers_6}");
+			var levers_7 = parseFloat("{$levers_7}");
+			var levers_8 = parseFloat("{$levers_8}");
+			var levers_9 = parseFloat("{$levers_9}");
+			var levers_10 = parseFloat("{$levers_10}");
+			//亏损警戒线
+			var stopLossRate = parseFloat("{$stopLossRate}");
+			//亏损平仓线
+			var lossLine = parseFloat("{$lossLine}");
+			//  点击下拉
+			$(".nav_listdown").on("click", function() {
+
+				if($(this).children("ul").css('display') == 'none') {
+					$(this).children("ul").show();
+				} else {
+					$(this).children("ul").hide();
+				}
+
+			});
+
+			/*点击杠杆率*/
+			$("#nav_listdown li").on("click", function() {
+
+				$(this).parent().siblings("p").children("span").text($(this).children("span").text());
+				//输入的保证金
+				var bao = parseInt($("#deposite_money").val());
+				//倍率
+				var a = parseFloat($("#num").text());
+               //天数
+				var c = parseFloat($("#num_day").text());
+				
+				//倍率小数
+				var b;
+				switch(a) {
+//
+//					case 1:
+//						b = levers_1;
+//						break;
+//					case 2:
+//						b = levers_2;
+//						break;
+
+					case 3:
+						b = levers_3;
+						break;
+					case 4:
+						b = levers_4;
+						break;
+					case 5:
+						b = levers_5;
+						break;
+					case 6:
+						b = levers_6;
+						break;
+					case 7:
+						b = levers_7;
+						break;
+					case 8:
+						b = levers_8;
+						break;
+					case 9:
+						b = levers_9;
+						break;
+					case 10:
+						b = levers_10;
+						break;
+				}
+
+				//倍数*倍率*天数*保证金/100
+
+				var all = a * b * c*bao/100;
+				all = all.toFixed(2)
+				$("#rateFee").text(all);
+				all = parseFloat(all);
+				//总支付资金
+				var allnum = all + bao;
+				$("#borrow_fee").text(allnum);
+//				总操盘资金：（倍数a*保证金bao）
+				var preparation_money =a*bao;
+
+				$("#total_money").text(preparation_money);
+//				获得资金
+				$("#gain_money").text(preparation_money);
+//				亏损警戒线：
+
+                var loss_warn=lossLine*bao+preparation_money;
+				$("#loss_warn").text(-loss_warn);
+				//亏损平仓线
+				 var loss_close=stopLossRate*bao+preparation_money;
+				$("#loss_close").text(-loss_close);
+				//天数改变
+                $('#duration').text(c);
+
+
+			});
+
+			$("#nav_listdown2 li").on("click", function() {
+
+				$(this).parent().siblings("p").children("span").text($(this).children("span").text());
+
+				var bao = parseInt($("#deposite_money").val());
+				
+				//倍率
+				var a = parseFloat($("#num").text());
+               //天数
+				var c = parseFloat($("#num_day").text());
+				
+				//倍率小数
+				var b;
+				switch(a) {
+
+//					case 1:
+//						b = levers_1;
+//						break;
+//					case 2:
+//						b = levers_2;
+//						break;
+
+					case 3:
+						b = levers_3;
+						break;
+					case 4:
+						b = levers_4;
+						break;
+					case 5:
+						b = levers_5;
+						break;
+					case 6:
+						b = levers_6;
+						break;
+					case 7:
+						b = levers_7;
+						break;
+					case 8:
+						b = levers_8;
+						break;
+					case 9:
+						b = levers_9;
+						break;
+					case 10:
+						b = levers_10;
+						break;
+				}
+
+				
+				var all = a * b * c*bao/100;
+//				console.log(a);
+//				console.log(b);
+//				console.log(c);
+				all = all.toFixed(2)
+				$("#rateFee").text(all);
+				all = parseFloat(all);
+                //总支付资金
+				var allnum = all + bao;
+				$("#borrow_fee").text(allnum);
+//                总操盘资金：（倍数a*保证金bao）
+				var preparation_money =a*bao;
+
+//				总操盘资金：
+				$("#total_money").text(preparation_money);
+//				获得资金
+				$("#gain_money").text(preparation_money);
+//				亏损警戒线：
+
+                var loss_warn=lossLine*bao+preparation_money;
+				$("#loss_warn").text(-loss_warn);
+				//亏损平仓线
+				 var loss_close=stopLossRate*bao+preparation_money;
+				$("#loss_close").text(-loss_close);
+                //天数改变
+                $('#duration').text(c);
+
+			});
+			//  保证金改变
+			$("#deposite_money").on('input', function() {
+
+//				保证金
+			 var bao = parseInt($("#deposite_money").val());
+			 $("#deposit_money").text(bao);
+				//倍率
+				var a = parseFloat($("#num").text());
+               //天数
+				var c = parseFloat($("#num_day").text());
+				
+				//倍率小数
+				var b;
+				switch(a) {
+
+//					case 1:
+//						b = levers_1;
+//						break;
+//					case 2:
+//						b = levers_2;
+//						break;
+					case 3:
+						b = levers_3;
+						break;
+					case 4:
+						b = levers_4;
+						break;
+					case 5:
+						b = levers_5;
+						break;
+					case 6:
+						b = levers_6;
+						break;
+					case 7:
+						b = levers_7;
+						break;
+					case 8:
+						b = levers_8;
+						break;
+					case 9:
+						b = levers_9;
+						break;
+					case 10:
+						b = levers_10;
+						break;
+				}
+				var all = a * b * c*bao/100;
+				all = all.toFixed(2)
+				$("#rateFee").text(all);
+				
+				all = parseFloat(all);
+				var allnum = all + bao;
+				$("#borrow_fee").text(allnum);
+                //                总操盘资金：（倍数a*保证金bao）
+                var preparation_money =a*bao;
+
+//				总操盘资金：
+				$("#total_money").text(preparation_money);
+//				获得资金
+				$("#gain_money").text(preparation_money);
+//					亏损警戒线：
+
+                var loss_warn=lossLine*bao+preparation_money;
+				$("#loss_warn").text(-loss_warn);
+				//亏损平仓线
+				 var loss_close=stopLossRate*bao+preparation_money;
+				$("#loss_close").text(-loss_close);
+                //天数改变
+                $('#duration').text(c);
+
+			});
+			function applyFinancingQy() {
+			  
+        	var day_select=$("#num_day").text(); //所选中的天数
+            var Con_Lists = $("#total_money").text();
+            var beishu =$("#beilv >span").text();
+            console.log(day_select);console.log(Con_Lists);console.log(beishu);
+            $.ajax({
+                type: 'POST',
+                url: "{:url('index/index/ajax_html')}",
+                data: {'Con_Lists':Con_Lists,'beishu':beishu,'day_select':day_select},
+                dataType: 'json',
+                success: function (data) {
+                	
+                    console.log(data);
+                  window.location.href = "./buy";
+                },
+                fail: function (err, status) {
+                    console.log(2)
+                }
+            })
+        };
+
+		</script>
+
+
+		<!--传值给后面点买页面-->
+
+
+	</body>
+
+</html>

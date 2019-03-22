@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+	{include file="public:top" /}
+	<link href="__STATIC__/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/home/css/index.css" />
+	<link rel="stylesheet" type="text/css" href="__STATIC__/home/css/buy.css" />
+	<link rel="stylesheet" type="text/css" href="__STATIC__/home/css/index_information.css" />
+	<style type="text/css">
+		/*********注意事项和交易软件***********/
+.pz-ware-software{margin-top:20px;margin-bottom:30px;}
+#waring-software{top:2px;position: relative;}
+#waring-software li a{float:left;width:125px;text-align:center;height:40px;line-height:40px;margin-right:15px;border:1px solid #ccc;border-bottom:none;font-size:18px;color:#000;}
+#waring-software li a.active{width:125px;text-align:center;height:40px;line-height:40px;color:#000;border-top:2px solid #D03B00;background:#F4F1E5;}
+.ware-software-content{background:#F4F1E5;padding: 25px;border: 1px solid #ccc;min-height:300px;}
+
+#pzwaring ul li{line-height: 35px;font-size: 14px;color:#5F5F5F;}
+#pzwaring ul li em{width:20px;text-align:center;height:20px;line-height:20px;background:#E95B5B;color:#fff;display:block;float:left;margin-top:7px;font-style:italic;margin-right:8px;border-radius:3px;}
+/*********注意事项和交易软件***********/
+
+	</style>
+</head>
+<body>
+	<div class="w pz-type-swith" style="">
+				<ul class="userMenu">
+					<li data-id="index_informatiom_one">
+						<a class="on dianji current" href="./PcBuyFree">免息配资</a>
+					</li>
+					<li data-id="index_informatiom_two">
+						<a class=" dianji " href="./PcBuyMonth">按月配资</a>
+					</li>
+					<li data-id="index_informatiom_three">
+						<a class=" dianji " href="./PcBuyDay">按天配资</a>
+					</li>
+				</ul>
+				<div class="pz-day-content-all" id="content">
+				</div>
+			</div>
+			<div class="w pz-ware-software">
+    <div>
+        <ul id="waring-software" class="clearfix">
+            <li><a href="javascript:void(0)" class="active" onclick="showWaringSoft('pzwaring',this);">注意事项</a></li>
+            <div class="Clr"></div>
+        </ul>
+    </div>
+    <div class="ware-software-content">
+        <div id="pzwaring" style="display:block;">
+            <ul>
+                <li><em>1</em>无需支付账户管理费（不包含交易印花税、过户费和佣金），投资盈利7成归您。</li>
+                <li><em>2</em>投资本金：您用于投资股票的资金,起点相当低。</li>
+                <li><em>3</em>资金使用期限：按天计算，不包含各类节假日。</li>
+                <li><em>4</em>亏损警告线：当总操盘资金低于警戒线以下时，只能平仓不能建仓，我们将有权把您的股票减仓。</li>
+                <li><em>5</em>亏损警告线：当总操盘资金低于警戒线以下时，只能平仓不能建仓，需要尽快补充风险保证金，以免低于亏损平仓线被平仓。</li>
+                <li><em>6</em>股市有风险，投资需谨慎。</li>
+            </ul>
+        </div>
+       
+    </div>
+</div>
+{include file="public:PcPublicFoot" /}
+{include file="public:footer" /}
+<!--局部刷新-->
+		<script type="text/javascript">
+			$(".userMenu").on("click", "li", function() {
+				// 	console.log($(this).children("a"));
+				$(this).children("a").addClass("on")
+				$(this).siblings().children("a").removeClass("on");
+				var sId = $(this).data("id"); //获取data-id的值
+				window.location.hash = sId; //设置锚点
+				loadInner(sId);
+			});
+
+			function loadInner(sId) {
+				var sId = window.location.hash;
+				var pathn, i;
+				switch(sId) {
+					case "#index_informatiom_one":
+						pathn = "index_information.html";
+						i = 0;
+						break;　　　　　　　
+					case "#index_informatiom_two":
+						pathn = "index_information_first.html";
+						i = 1;
+						break;
+					case "#index_informatiom_three":
+						pathn = "index_information_second.html";
+						i = 2;
+						break;　　　　　　
+					default:
+						pathn = "index_information.html";
+						i = 0;
+						break;
+				}
+				$("#content").load(pathn); //加载相对应的内容
+				$(".userMenu li").eq(i).addClass("current").siblings().removeClass("current"); //当前列表高亮
+			}
+			var sId = window.location.hash;
+			loadInner(sId);
+		</script>
+</body>
+</html>

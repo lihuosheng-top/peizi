@@ -1,0 +1,73 @@
+/*!
+ * Cropper v0.9.2
+ * https://github.com/fengyuanchen/cropper
+ *
+ * Copyright (c) 2014-2015 Fengyuan Chen and contributors
+ * Released under the MIT license
+ *
+ * Date: 2015-04-18T04:35:01.500Z
+ */.cropper-container{position:relative;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}.cropper-container img{display:block;width:100%;min-width:0!important;max-width:none!important;height:100%;min-height:0!important;max-height:none!important;image-orientation:0deg!important}.cropper-canvas,.cropper-crop-box,.cropper-drag-box,.cropper-modal{position:absolute;top:0;right:0;bottom:0;left:0}.cropper-drag-box{background-color:#fff;filter:alpha(opacity=0);opacity:0}.cropper-modal{background-color:#000;filter:alpha(opacity=50);opacity:.5}.cropper-view-box{display:block;width:100%;height:100%;overflow:hidden;outline:#69f solid 1px;outline-color:rgba(102,153,255,.75)}.cropper-dashed{position:absolute;display:block;filter:alpha(opacity=50);border:0 dashed #fff;opacity:.5}.cropper-dashed.dashed-h{top:33.33333333%;left:0;width:100%;height:33.33333333%;border-top-width:1px;border-bottom-width:1px}.cropper-dashed.dashed-v{top:0;left:33.33333333%;width:33.33333333%;height:100%;border-right-width:1px;border-left-width:1px}.cropper-face,.cropper-line,.cropper-point{position:absolute;display:block;width:100%;height:100%;filter:alpha(opacity=10);opacity:.1}.cropper-face{top:0;left:0;cursor:move;background-color:#fff}.cropper-line{background-color:#69f}.cropper-line.line-e{top:0;right:-3px;width:5px;cursor:e-resize}.cropper-line.line-n{top:-3px;left:0;height:5px;cursor:n-resize}.cropper-line.line-w{top:0;left:-3px;width:5px;cursor:w-resize}.cropper-line.line-s{bottom:-3px;left:0;height:5px;cursor:s-resize}.cropper-point{width:5px;height:5px;background-color:#69f;filter:alpha(opacity=75);opacity:.75}.cropper-point.point-e{top:50%;right:-3px;margin-top:-3px;cursor:e-resize}.cropper-point.point-n{top:-3px;left:50%;margin-left:-3px;cursor:n-resize}.cropper-point.point-w{top:50%;left:-3px;margin-top:-3px;cursor:w-resize}.cropper-point.point-s{bottom:-3px;left:50%;margin-left:-3px;cursor:s-resize}.cropper-point.point-ne{top:-3px;right:-3px;cursor:ne-resize}.cropper-point.point-nw{top:-3px;left:-3px;cursor:nw-resize}.cropper-point.point-sw{bottom:-3px;left:-3px;cursor:sw-resize}.cropper-point.point-se{right:-3px;bottom:-3px;width:20px;height:20px;cursor:se-resize;filter:alpha(opacity=100);opacity:1}.cropper-point.point-se:before{position:absolute;right:-50%;bottom:-50%;display:block;width:200%;height:200%;content:" ";background-color:#69f;filter:alpha(opacity=0);opacity:0}@media (min-width:768px){.cropper-point.point-se{width:15px;height:15px}}@media (min-width:992px){.cropper-point.point-se{width:10px;height:10px}}@media (min-width:1200px){.cropper-point.point-se{width:5px;height:5px;filter:alpha(opacity=75);opacity:.75}}.cropper-bg{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC)}.cropper-invisible{filter:alpha(opacity=0);opacity:0}.cropper-hide{position:fixed;top:0;left:0;z-index:-1;width:auto!important;min-width:0!important;max-width:none!important;height:auto!important;min-height:0!important;max-height:none!important;filter:alpha(opacity=0);opacity:0}.cropper-hidden{display:none!important}.cropper-move{cursor:move}.cropper-crop{cursor:crosshair}.cropper-disabled .cropper-drag-box,.cropper-disabled .cropper-face,.cropper-disabled .cropper-line,.cropper-disabled .cropper-point{cursor:not-allowed}
+/* layer弹层移动版样式 */
+.container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #fff;
+    top: 0;
+}.tx-head {
+     line-height: 45px;
+     background: #45a1de;
+     overflow: hidden;
+     position: fixed;
+     z-index: 999;
+     width: 100%;
+ }.cropper-hidden {
+      display: none!important;
+  }.tx-head a {
+       color: #DEF1FD;
+   }
+.layermbox { position: absolute; left: 0; top: 0; width: 100%; z-index: 19891014; }
+.layermmain, .laymshade { position: fixed; left: 0; top: 0; width: 100%; height: 100%; }
+.layermbtn span, .layermchild { display: inline-block; position: relative; }
+.laymshade { background-color: rgba(0,0,0,.5); pointer-events: auto; }
+.layermmain { display: table; font-family: Helvetica,arial,sans-serif; pointer-events: none; }
+.layermmain .section { display: table-cell; vertical-align: middle; text-align: center; }
+.layermchild { text-align: left; background-color: #fff; font-size: 14px; border-radius: 6px; box-shadow: 0 0 8px rgba(0,0,0,.1); pointer-events: auto; -webkit-animation-fill-mode: both; animation-fill-mode: both; -webkit-animation-duration: .18s; animation-duration: .18s; }
+.layermborder { border: 1px solid #999; }
+
+@-webkit-keyframes bounceIn {
+    0% { opacity: 0; -webkit-transform: scale(.5); transform: scale(.5); }
+    100% { opacity: 1; -webkit-transform: scale(1); transform: scale(1); }
+}
+
+.layermanim { animation-name: bounceIn; -webkit-animation-name: bounceIn; }
+.layermbox0 .layermchild { max-width: 260px; min-width: 150px; }
+.layermbox1 .layermchild { border: none; border-radius: 0; }
+.layermbox2 .layermchild { width: auto; max-width: 260px; min-width: 40px; border: none; background-color: rgba(0,0,0,.6); color: #fff; }
+.layermchild h3 { padding: 0 45px 0 10px; height: 50px; line-height: 50px; font-size: 16px; font-weight: 400; border-radius: 5px 5px 0 0; border-bottom: 1px solid #EBEBEB; }
+.layermbtn span, .layermchild h3 { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+.layermcont { padding: 20px 15px; line-height: 22px; border-radius: 5px; }
+.layermbox1 .layermcont { padding: 0; }
+.layermbox2 .layermcont { text-align: center; padding: 30px 30px 0; line-height: 0; }
+.layermbox2 .layermcont i { width: 1.5rem; height: 1.5rem; margin-left: 8px; display: inline-block; background-color: #fff; border-radius: 100%; -webkit-animation: bouncedelay 1.4s infinite ease-in-out; animation: bouncedelay 1.4s infinite ease-in-out; -webkit-animation-fill-mode: both; animation-fill-mode: both; }
+
+@-webkit-keyframes bouncedelay {
+    0%,100%,80% { -webkit-transform: scale(0); }
+    40% { -webkit-transform: scale(1); }
+}
+
+@keyframes bouncedelay {
+    0%,100%,80% { transform: scale(0); -webkit-transform: scale(0); }
+    40% { transform: scale(1); -webkit-transform: scale(1); }
+}
+
+.layermbox2 .layermcont i:first-child { margin-left: 0; -webkit-animation-delay: -.32s; animation-delay: -.32s; }
+.layermbox2 .layermcont i.laymloadtwo { -webkit-animation-delay: -.16s; animation-delay: -.16s; }
+.layermbox2 .layermcont > div { line-height: 22px; padding-top: 7px; margin-bottom: 20px; font-size: 14px; }
+.layermbtn { position: relative; height: 40px; line-height: 40px; font-size: 0; text-align: center; border-top: 1px solid #EBEBEB; }
+.layermbtn span { width: 50%; text-align: center; font-size: 14px; cursor: pointer; border-radius: 0 5px 0 0; }
+.layermbtn span:first-child { height: 39px; background-color: #fff; border-radius: 0 0 0 5px; }
+.layermbtn:before { content: '\20'; position: absolute; width: 1px; height: 39px; left: 50%; top: 0; background-color: #EBEBEB; }
+.layermend { position: absolute; right: 7px; top: 10px; width: 30px; height: 30px; border: 0; font-weight: 400; background: 0 0; cursor: pointer; -webkit-appearance: none; font-size: 30px; }
+.layermend::after, .layermend::before { position: absolute; left: 5px; top: 13px; content: ''; width: 20px; height: 2px; background-color: rgba(0,0,0,.3); transform: rotate(45deg); -webkit-transform: rotate(45deg); border-radius: 3px; }
+.layermend::after { transform: rotate(-45deg); -webkit-transform: rotate(-45deg); }

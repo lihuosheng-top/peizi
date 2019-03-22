@@ -1,0 +1,362 @@
+/* default style */
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    background-color: #F1F1F1;
+}
+
+body.bg-white{
+    background-color: #fff;
+}
+body.bg-dark{
+    background-color: #2e3233;
+}
+/* vue cloak */
+[v-cloak]{
+    display: none;
+}
+/* override weui css style */
+.weui-btn+.weui-btn{margin: 0;}
+.weui-tab {
+    height: auto;
+}
+
+.weui-btn_primary {
+    background-color: #E44348;
+}
+.weui-btn_primary:not(.weui-btn_disabled):active{
+    background-color: #c53030;
+}
+.weui-btn_warn{
+    background-color: #FB7C34;
+}
+.weui-tabbar__fixed {
+    position: fixed;
+}
+.weui-navbar__relative{
+    position: relative;
+}
+
+.weui-toptips_normal{
+    background-color: rgba(0,0,0,.6);
+}
+.weui-cell{
+    font-size:13px;
+}
+
+.weui-vcode-btn{
+    font-size:14px;
+}
+
+
+.weui-btn_plain-primary{
+    color: #E54748;
+    border-color: #E54748;
+}
+
+
+/*\\ override weui css style */
+
+.page-with-footbar {
+    padding-bottom: 68px;
+}
+
+a {
+    color: #333;
+}
+/*utils*/
+.clearfix::before,.clearfix::after{
+    content: "";
+    display: table;
+}
+.clearfix::after{
+    clear: both;
+}
+.wrapper {
+    padding: 0 15px;
+}
+
+.block-btn-wrapper {
+    padding: 15px 20px;
+}
+
+
+/*常用数字字体大小*/
+.number-xxxl{
+    font-size: 28px;
+}
+.number-xxl {
+    font-size: 22px;
+}
+
+.number-xl {
+    font-size: 20px;
+}
+
+.number-l {
+    font-size: 18px;
+}
+
+.number-red {
+    color: #E54349;
+}
+
+.number-green {
+    color: #20821C;
+}
+
+
+/*\\ utils*/
+
+
+/* custom components */
+
+.v-header {
+    position: relative;
+    padding: 3px 0;
+    box-sizing: border-box;
+    background-color: #36373A
+}
+
+.v-header .v-header-title,
+.v-header h1 {
+    margin: 0 88px;
+    line-height: 40px;
+    text-align: center;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 400;
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #fff
+}
+
+.v-header .v-header-title>span {
+    display: inline-block
+}
+
+.v-header .v-header-left,
+.v-header .v-header-right {
+    position: absolute;
+    top: 14px;
+    display: block;
+    font-size: 14px;
+    line-height: 21px;
+    color: #ccc
+}
+
+.v-header .v-header-left a,
+.v-header .v-header-left button,
+.v-header .v-header-right a,
+.v-header .v-header-right button {
+    float: left;
+    margin-right: 8px;
+    color: #ccc
+}
+
+.v-header .v-header-left a:active,
+.v-header .v-header-left button:active,
+.v-header .v-header-right a:active,
+.v-header .v-header-right button:active {
+    opacity: .5
+}
+
+.v-header .v-header-left {
+    left: 18px
+}
+
+.v-header .v-header-left .v-header-back {
+    padding-left: 16px
+}
+
+.v-header .v-header-left .left-arrow {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: -5px;
+    left: -5px
+}
+
+.v-header .v-header-left .left-arrow:before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #ccc;
+    border-width: 1px 0 0 1px;
+    -webkit-transform: rotate(315deg);
+    transform: rotate(315deg);
+    top: 8px;
+    left: 7px
+}
+
+.v-header .v-header-left .left-arrow:before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #ccc;
+    border-width: 1px 0 0 1px;
+    -webkit-transform: rotate(315deg);
+    transform: rotate(315deg);
+    top: 8px;
+    left: 7px
+}
+
+.v-header .v-header-right {
+    right: 15px
+}
+
+.v-header .v-header-right a,
+.v-header .v-header-right button {
+    margin-left: 8px;
+    margin-right: 0
+}
+
+.v-header .v-header-right .v-header-more:after {
+    content: "\2022   \2022   \2022   ";
+    font-size: 16px
+}
+
+
+/*\\ custom components  */
+
+
+/*产品展示模块*/
+
+.mod-products {
+    background-color: #fff;
+}
+
+.mod-products .weui-navbar {
+    border-top: 1px solid #E4E4E4;
+}
+
+.mod-products .weui-navbar a {
+    color: #666;
+}
+
+.mod-product-item {
+    padding: 15px 0;
+    color: #999;
+    text-align: center;
+}
+
+.mod-product-item .title {
+    font-size: 14px;
+}
+
+/*.mod-product-item .title i.icon {*/
+    /*display: inline-block;*/
+    /*width: 15px;*/
+    /*margin-right: 3px;*/
+    /*vertical-align: -2px;*/
+    /*height: 15px;*/
+    /*background: url(../images/home/mfty.png);*/
+    /*-webkit-background-size: 100%;*/
+    /*background-size: 100%;*/
+/*}*/
+
+.mod-product-item .main-section {
+    text-align: center;
+}
+
+.mod-product-item .main-section .main-txt {
+    color: #F85517;
+}
+
+.mod-product-item .main-section .txt-important {
+    font-size: 50px;
+}
+
+.mod-product-item .rules {
+    text-align: center;
+}
+
+.mod-product-item .rules .tags {
+    color: #333;
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.page {
+    background-color: #fff;
+    padding: 0 15px;
+    margin-bottom: 20px;
+}
+
+.page .page__hd {
+    padding: 5px 0;
+}
+
+.page__title {
+    padding: 5px 0;
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+.page .page__hd .meta {
+    color: #999;
+}
+
+/* record list */
+.record-list .title{
+    font-size: 16px;
+    color: #333;
+}
+.record-list .meta{
+    font-size: 12px;
+    color: #999;
+}
+
+.record-list .tag{
+    color: #666;
+}
+.record-list .tag-error{
+    color: red;
+}
+
+.cell-links a{
+    color: #7A90B2;
+}
+
+.link-right{
+    float: right;
+}
+
+.tag.tag-error{
+    color: red;
+}
+
+.tag.tag-success{
+    color: green;
+}
+
+.list-empty{
+    font-size:16px;
+    line-height:44px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.mod-pager{
+    padding: 0 15px;
+    margin: 10px 0;
+    text-align: right;
+    font-size:13px;
+}
+
+.mod-pager a{
+    display: inline-block;
+    background-color: #fff;
+    color: #666;
+    border-radius:3px;
+    line-height:30px;
+    padding:0 5px
+}

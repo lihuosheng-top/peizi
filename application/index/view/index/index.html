@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+
+	</head>
+
+	<body class="index_body">
+		{include file="public:top" /}
+		<link href="__STATIC__/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/css/index.css" />
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/css/buy.css" />
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/css/index_information.css" />
+		<style type="text/css">
+			.item a {
+				display: block;
+				overflow: hidden;
+			}
+			.bd_cid{
+				width: 300px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: inline-block;
+			}
+			.seachcontent>ul>li>ul{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 10px;
+			}
+			.seachcontent>ul>li>ul>li{
+				text-align: center;
+				flex: 1;
+			}
+			.seachcontent>ul>li>ul>li>a{
+				color: #000;
+				font-size: 12px;;
+			}
+			/*隐藏*/
+			/*.pz-type-swith{*/
+			/*display: none;*/
+			/*}*/
+			.baoshang p span{
+				line-height: 27px;
+			}
+			.bd_cids{
+				width: 300px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: inline-block;
+			}
+		</style>
+		<style type="text/css">
+
+		</style>
+		<!--banner-->
+		<div class="banner_login br-w100">
+			<div class="bBanner br-w100">
+
+				<div class="w1024">
+					<div class="login_main" {if condition="$_SESSION['member'] neq '' " } style="display: none;" {/if}>
+						<p>用户登录</p>
+
+						<input type="text" name="" id="username" placeholder="用户名" />
+						<div id="err1" class="err">请输入正确用户名</div>
+						<input type="password" name="" id="password" placeholder="密码" />
+						<div id="err2" class="err">请输入正确密码</div>
+						<a href="./forgot_pass.html" style="color:#E01923 ">忘记密码</a>
+						<div class="login_box">
+							<a href="javascript:viod()" class="btn_login">登录</a>
+							<a href="./reg.html" class="btn_reg">注册</a>
+						</div>
+
+					</div>
+				</div>
+
+				<!--轮播图-->
+				<div class="home_banner">
+					<div id="myCarousel" class="carousel slide">
+						<!-- 轮播（Carousel）指标 -->
+						<ol class="carousel-indicators">
+							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel" data-slide-to="1"></li>
+							<li data-target="#myCarousel" data-slide-to="2"></li>
+						</ol>
+						<!-- 轮播（Carousel）项目 -->
+						<div class="carousel-inner">
+							<div class="item active">
+								<a href="">
+									<div class="carImg"></div>
+								</a>
+
+							</div>
+							<div class="item">
+								<a href="">
+									<div class="carImg2"></div>
+								</a>
+
+							</div>
+							<div class="item">
+								<a href="">
+									<div class="carImg3"></div>
+								</a>
+
+							</div>
+						</div>
+						<!-- 轮播（Carousel）按钮导航 -->
+						<a class="carousel-control left" href="#myCarousel" data-slide="prev" style="z-index: 99999;">&lsaquo;</a>
+						<a class="carousel-control right" href="#myCarousel" data-slide="next" style="z-index: 99999;">&rsaquo;</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!--点买A股-->
+		<div class="AS_box br-w100">
+			<!--3个盒子-->
+			<div class="three_box w1024 br-clearfix">
+				<div class="three_item br-fl">
+					<a href="javascript:void(0);" style="display: block;"><img src="./public/static/home/img/p (3).png" /></a>
+					<p class="tit">一分钟了解尚牛在线</p>
+					<p class="tib">全新的投资人策略匹配平台</p>
+				</div>
+				<div class="three_item br-fl">
+					<a href="javascript:void(0);" style="display: block; height: 192.02px;"><img src="./public/static/home/img/p (2).png" /></a>
+					<p class="tit">用心服务</p>
+					<p class="tib">一对一专业客服（电话 微信 QQ）</br>全程指导</p>
+				</div>
+				<div class="three_item br-fl">
+					<a href="javascript:void(0);" style="display: block;"><img src="./public/static/home/img/p (1).png" /></a>
+					<p class="P_block" style="float: left;">累计匹配策略 </br><span>{$count + 612558}</span>条</p>
+					<p class="P_block" style="float: right;">累计盈利</br><span>{:round($earnSum + 3762984540, 2 ) }</span>元</p>
+				</div>
+			</div>
+			<div class="w pz-type-swith" style="">
+				<ul class="userMenu">
+					<li data-id="index_informatiom_one">
+						<a class="on dianji current">免息配资</a>
+					</li>
+					<li data-id="index_informatiom_two">
+						<a class=" dianji">按月配资</a>
+					</li>
+					<li data-id="index_informatiom_three">
+						<a class=" dianji">按天配资</a>
+					</li>
+				</ul>
+				<div class="pz-day-content-all" id="content">
+				</div>
+			</div>
+			<div class="AS_box_cont w1024 br-text-center">
+				<h1 class="br-ml-title">POINT TO BUY A SHARES</h1>
+				<div class="br-ml-line"></div>
+				<p class="br-ml-bt">点买A股</p>
+				<div class="AS_contImg br-clearfix">
+					<div class="three_item br-fl">
+						<div class="ASitem_top"><img src="./public/static/home/img/01.png" /></div>
+						<div class="ASitem_bot br-clearfix">
+							<span class="ASbot_l br-fl"><img src="./public/static/home/img/num (1).png"/></span>
+							<p class="ASbot_r br-fl">点买人只需冻结最低1250元履<br>约保证金支付45元交易综合费</p>
+						</div>
+					</div>
+					<div class="three_item br-fl">
+						<div class="ASitem_top"><img src="./public/static/home/img/02.png" /></div>
+						<div class="ASitem_bot br-clearfix">
+							<span class="ASbot_l br-fl"><img src="./public/static/home/img/num (2).png"/></span>
+							<p class="ASbot_r br-fl">即刻提交谋略系统智能匹<br>配投资人，投资人实施买入</p>
+						</div>
+					</div>
+					<div class="three_item br-fl">
+						<div class="ASitem_top"><img src="./public/static/home/img/03.png" /></div>
+						<div class="ASitem_bot br-clearfix">
+							<span class="ASbot_l br-fl"><img src="./public/static/home/img/num (3).png"/></span>
+							<p class="ASbot_r br-fl">谋略到期后单笔1万元交<br>易本金获得90%交易盈利</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="wrapper">
+			<!--行情中心-->
+			<div class="pb4">
+				<div class="index_mod4">
+					<div class="mod_right" style="width: 300px;">
+						<h3 class="right-tit">行情中心</h3>
+						<div class="s_menu" id="menu_szzs">
+							<ul>
+								<li sv="0" class="current" id="shanghai">
+									<a  >上证指数</a>
+								</li>
+								<li sv="1"  id="shengzhen">
+									<a >深证指数</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="mod_left">
+						<div class="hq_con" id="sh_con">
+							<div class="hq_txt" id="a0001_bnt">
+								<a class="cur" sv="0" href="javascript:;">分时线</a>
+								<a sv="1" href="javascript:;">日K线</a>
+								<a sv="2" href="javascript:;">周K线</a>
+								<a sv="3" href="javascript:;">月K线</a>
+							</div>
+							<div class="hq_img">
+								<img src="http://image.sinajs.cn/newchart/min/n/sh000001.gif" width="500" height="300" id="a0001_img">
+							</div>
+						</div>
+						<div class="hq_con" id="sz_con" style="display:none;">
+							<div class="hq_txt" id="s0001_bnt">
+								<a class="cur" sv="0" href="javascript:;">分时线</a>
+								<a sv="1" href="javascript:;">日K线</a>
+								<a sv="2" href="javascript:;">周K线</a>
+								<a sv="3" href="javascript:;">月K线</a>
+							</div>
+							<div class="hq_img">
+								<img src="http://image.sinajs.cn/newchart/min/n/sz399001.gif" width="450" height="320" id="s0001_img">
+							</div>
+						</div>
+						<div class="hq_sv" style="width: 358px;">
+							<div class="hq_st">
+								<div class="hq_a1" id="a0001_v1">
+									<li class="sv sznum" style="color: rgb(255, 0, 0);" >0</li>
+									<li class="ico "></li>
+									<li class="icon-right szup">0</li>
+									<li class="icon-right "><span class="szdown">0</span><span>%</span></li>
+								</div>
+								<div class="hq_aq1_xq" id="a0001_detail">
+									<p>
+										<span> <span class="xq-color">今开：</span>
+										<font color="#237c02" class="today_open">0</font>
+										</span>
+										<span><span class="xq-color">成交量：</span>
+										<font color="#237c02" class="volume">0</font>
+										</span>
+										<span><span class="xq-color">振幅：</span>
+										<font color="#007cc8" class="amplitude">0</font>
+										</span>
+										<span><span class="xq-color">最高：</span>
+										<font color="#237c02" class="highest">0</font>
+										</span>
+										<span><span class="xq-color">成交额：</span>
+										<font color="#007cc8" class="turnover">0</font>
+										</span>
+										<span><span class="xq-color">昨收：</span>
+										<font color="#007cc8" class="yesterday_closed">0</font>
+										</span>
+										<span><span class="xq-color">总市值：</span>
+										<font color="#007cc8" class="total_value">0</font>
+										</span>
+									</p>
+								</div>
+								<div class="gupiao">
+									<table id="gpInfo" width="100%">
+										<colgroup>
+											<col style="width:80px">
+											<col style="width:100px">
+											<col style="width:70px">
+											<col>
+										</colgroup>
+										<tbody>
+											<tr class="title">
+												<td style="color:#ff3646">领涨板块</td>
+												<td></td>
+												<td>
+													<a style="color:#237c02">领跌板块</a>
+												</td>
+												<td class="text-right"></td>
+											</tr>
+											<tr>
+												<td>
+													<a>券商</a>
+												</td>
+												<td style="color:#ff3646" class="brokers_up">
+													+1.32%
+												</td>
+												<td>
+													<a>券商</a>
+												</td>
+												<td class="text-right brokers_down" style="color:#237c02">
+													-2.36%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<a>环保行业</a>
+												</td>
+												<td style="color:#ff3646" class="environmental_up">
+													+0.17%
+												</td>
+												<td>
+													<a>环保行业</a>
+												</td>
+												<td class="text-right environmental_down" style="color:#237c02">
+													-2.28%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<a>次新股</a>
+												</td>
+												<td style="color:#ff3646" class="second_up">
+													+0.12%
+												</td>
+												<td>
+													<a>次新股</a>
+												</td>
+												<td class="text-right second_down" style="color:#237c02">
+													-2.10%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<a>酿酒行业</a>
+												</td>
+												<td style="color:#ff3646" class="wine_up">
+													+0.12%
+												</td>
+												<td>
+													<a>酿酒行业</a>
+												</td>
+												<td class="text-right wine_down" style="color:#237c02">
+													-2.10%
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--行情中心 end-->
+
+			<div class="pb6">
+		<!-- 		<div class="pb6-l">
+					<ul>
+						<li>
+							<h3>交易软件下载</h3>
+							<div class="det">新用户注册并实名认证后请下载安装此交易软件</div>
+							<div class="icon icon-left"></div>
+							<a href="/bangzhu/downloaded.html" target="_blank">电脑版下载</a>
+						</li>
+					</ul>
+				</div> -->
+				<div class="pb6-r">
+					<div class="gonggaoBox">
+						<div class="hd">
+							<span id="hd-one">股票资讯 <a href="#" target="_blank" class="gg">更多...</a></span>
+							<span id="hd-two">网站公告 <a href="#" target="_blank" class="gg">更多...</a></span>
+						</div>
+						{if !empty($news_informations)}
+						<div class="bd">
+
+
+							<span id="bd-one">
+								{volist name ="news_informations" id ='vo'}
+								<li>
+									<i class="dw_Cbg "></i>
+									<span class="date">{$vo.createTime}</span>
+									<a id="bd_colors" class="bd_cid" data-id="bd_colors_{$vo.id}" href="#javascript:void(0)" >■ 【尚牛在线】{$vo.title}</a>
+							</li>
+										{/volist}
+
+							</span>
+
+							<span id="bd-two">
+								{volist name='news_informations_tow' id ='value'}
+                            <li><i class="dw_Cbg  "></i><span class="date">{$value.createTime}</span>
+							<a id="bd_colors"  href="#javascript:void(0)" class="bd_cids"  data-id="bd_colors_{$value.id}" >■ {$value.title}</a>
+							</li>
+								{/volist}
+							</span>
+
+						</div>
+						{/if}
+					</div>
+					<!--切换 end-->
+				</div>
+			</div>
+		</div>
+
+
+		<!--5重保障-->
+		<div class="guarantee br-w100">
+			<div class="w1024 br-text-center">
+				<h1 class="br-ml-title">WE WILL ENSURE YOUR BEST INTEREST</h1>
+				<div class="br-ml-line"></div>
+				<p class="br-ml-bt">5重保障最大力度保障您的利益</p>
+				<div class="guarantee_botBox br-clearfix">
+					<div class="guarantee_item bg1">网站安全</div>
+					<div class="guarantee_item bg1">风控<br>保险体质</div>
+					<div class="guarantee_item bg1">第三方<br>资金托管</div>
+					<div class="guarantee_item bg1">资金<br>安全保障</div>
+					<div class="guarantee_item bg1">和投资人<br>收益共享<br>风险共担</div>
+
+				</div>
+			</div>
+		</div>
+		<!--点买人盈利亏损-->
+		<!-- <div class="PAL br-w100 br-text-center">
+			<div class="w1024 br-clearfix">
+				<div class="PAL_item br-fl">
+					<div class="item_img"></div>
+					<p>点买人获得90%的交易盈利，系统自动<br>划入点买人的尚牛在线账户</p>
+				</div>
+				<div class="PAL_item br-fr">
+					<div class="item_img"></div>
+					<p>点买人承担冻结履约保证金以内的亏损<br>超出部分由投资人承担</p>
+				</div>
+			</div>
+		</div>
+
+		<!--微信交易-->
+		<!-- <div class="weChatDeal br-w100">
+			<div class="w1024">
+				<div class="weChatDeal_box">
+					<h1>微信端交易更加方便</span></h1>
+					<p class="sp1">“下单 持仓 结算 一目了然”</p>
+					<p class="sp2">更多优惠活动等着您</p>
+				</div>
+			</div>
+		</div> -->
+		<!--合作伙伴-->
+		<div class="companion br-w100 br-text-center">
+			<div class="w1024">
+				<h1 class="br-ml-title">PARTNERS</h1>
+				<div class="br-ml-line"></div>
+				<p class="br-ml-bt">合作伙伴</p>
+				<div class="companion_box br-clearfix">
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+					<div class="cp_item"></div>
+				</div>
+			</div>
+		</div>
+	   <!--搜索-->
+	   <div class="seachcontent" style="width: 1024px; margin: 0 auto;">
+	   	<ul>
+	   		<li>
+	   			<ul style="width: 100%;">
+	   				<li><a href="http://www.sm00009.com">股票配资</a></li>
+	   				<li><a href="http://www.sm00009.com">配资网站</a></li>
+	   				<li><a href="http://www.sm00009.com">配资杠杆</a></li>
+	   				<li><a href="http://www.sm00009.com">配资开户</a></li>
+	   				<li><a href="http://www.sm00009.com">网上炒股配资【尚牛在线】</a></li>
+	   				<li><a href="http://www.sm00009.com">炒股配资</a></li>
+	   				<li><a href="http://www.sm00009.com">炒股开户</a></li>
+	   			</ul>
+	   		</li>
+	   		<li>
+	   			<ul>
+	   			
+	   				<li><a href="http://www.sm00009.com">配资开户</a></li>
+	   				<li><a href="http://www.sm00009.com">配资网站</a></li>
+	   				<li><a href="http://www.sm00009.com">配资公司</a></li>
+	   				<li><a href="http://www.sm00009.com">配资平台</a></li>
+	   				<li><a href="http://www.sm00009.com">股票开户</a></li>
+	   				<li><a href="http://www.sm00009.com">安全配资</a></li>
+	   				<li><a href="http://www.sm00009.com">gupiaopeizi</a></li>
+	   				
+	   			</ul>
+	   		</li>
+	   		<li>
+	   			<ul>
+	   				<li><a href="http://www.sm00009.com">杠杆炒股</a></li>
+	   				<li><a href="http://www.sm00009.com">杠杆开户</a></li>
+	   				<li><a href="http://www.sm00009.com">杠杆配资</a></li>
+	   				<li><a href="http://www.sm00009.com">股票行情</a></li>
+	   				<li><a href="http://www.sm00009.com">炒股配资公司</a></li>
+	   				<li><a href="http://www.sm00009.com">证券配资</a></li>
+	   				<li><a href="http://www.sm00009.com">股票融资</a></li>
+	   			</ul>
+	   		</li>
+	   	</ul>
+	   </div>
+	{include file="public:PcPublicFoot" /}
+	{include file="public:footer" /}
+
+		<!--认证银行卡-提示绑定-->
+		<div class="popup" id="popup-id-verify">
+			<div class="popup-header group">
+				<h2>认证银行卡</h2>
+				<a href="javascript:;" class="js-close-popup"><i class="icon icon-close"></i></a>
+			</div>
+			<div class="popup-body group">
+				<!--<div class="field-row group" style="text-align:center">
+            <ol class="popup-note">
+                <li style="text-align:left;">提现和免息体验前必须先绑定一张银行卡</li>
+                <li style="text-align:left;">请务必认真填写真实资料</li>
+                <li style="text-align:left;">银行卡采用实名认证，一个身份证只能绑定一个账号</li>
+                <li style="text-align:left;">如遇到问题，请联系客服 <label id="m_basic_mobile">021-80321818</label></li>
+            </ol>
+            <p>为了保障您的账户安全，请先绑定银行卡</p>
+        </div>-->
+				<div class="btn-row group">
+					<a class="btn btn-pri" href="./ucenter/bankCards.html">去绑定</a>
+					<a class="btn btn-pri js-close-popup" href="javascript:;">暂不绑定</a>
+				</div>
+			</div>
+		</div>
+		<!--实名认证-->
+		<div class="popup" id="popup-realname-auth">
+			<div class="popup-header group">
+				<h2>实名认证</h2>
+				<a href="javascript:;" class="js-close-popup"><i class="icon icon-close"></i></a>
+			</div>
+			<div class="popup-body group">
+				<!--<div class="field-row group" style="text-align:center">
+            <ol class="popup-note">
+                <li style="text-align:left;">一个身份证对应一个账号</li>
+                <li style="text-align:left;">如遇到问题，请联系客服 <label id="m_basic_mobile">021-80321818</label></li>
+            </ol>
+            <p>为了保障您的账户安全，请先进行实名认证</p>
+        </div>-->
+				<div class="field-row group">
+					<label>真实姓名：</label>
+					<div class="field-val"><input id="姓名i" type="text" class="text"></div>
+				</div>
+				<div id="zsxm_err1" class="error-wrapper" style="margin-left:100px; display:none">
+					<div><i class="icon icon-x-altx-alt"></i>未填写姓名</div>
+				</div>
+				<div class="field-row group">
+					<label>身份证号：</label>
+					<div class="field-val">
+						<div class="field-val">
+							<input id="身份证i" type="text" class="text">
+						</div>
+					</div>
+				</div>
+				<div id="sfzh_err1" class="error-wrapper" style="margin-left:100px; display:none">
+					<div><i class="icon icon-x-altx-alt"></i>请填写准确的身份证</div>
+				</div>
+				<div class="btn-row group">
+					<a id="user_UpdateSelfIdA" class="btn btn-pri" href="javascript:void(0)">确认</a>
+					<a class="btn btn-sec js-close-popup" href="javascript:;">取消</a>
+				</div>
+			</div>
+		</div>
+		<div class="baoshang" data-id ="{$btn_emergency.status}">
+			<i class="bsc" onclick="t()"></i>
+			<div style="clear:both;"></div>
+			<div style="width: 90%; margin: 0 auto;">
+				<p style="text-align:center;"><strong style="color:rgb(255, 0, 0);font-family:Microsoft Yahei;font-size:20px;">{$notice_content.title}</strong></p>
+				<p style="text-align:center;">&nbsp;</p>
+				<p><strong style="font-size:18px;color:rgb(102, 102, 102);font-family:Microsoft Yahei;"><span style="font-size:16px;">&nbsp; &nbsp; &nbsp; &nbsp;</span></strong><strong style="color: rgb(102, 102, 102); font-family: &quot;Microsoft Yahei&quot;; font-size: 18px;"><span style="font-size:16px;">{$notice_content.contents}</span></strong></p>
+				<p><span style="color:rgb(0, 0, 0);font-family:Microsoft Yahei, Arial;font-size:14px;background-color:rgb(245, 246, 247);">&nbsp; &nbsp; &nbsp; &nbsp; </span><br style="color:rgb(0, 0, 0);font-family:Microsoft Yahei, Arial;font-size:14px;background-color:rgb(245, 246, 247);"><span style="color:rgb(0, 0, 0);font-family:Microsoft Yahei, Arial;font-size:14px;background-color:rgb(245, 246, 247);"></span></p>
+			</div>
+		</div>
+		<script src="__STATIC__/libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		<script src="__STATIC__/home/js/index.js"></script>
+		<script>
+			
+			
+    function t(){
+		
+        $(".baoshang").hide(200);
+    }
+
+</script>
+
+		<!--//定时器异步获取信息-->
+		<script>
+
+
+
+
+		</script>
+
+
+		<script>
+
+
+            var isTradingTime =function (){
+                var date = new Date();
+                // alert(date);
+                //判断是不是周末
+                var dt=date.getDay();
+                // console.log(dt);
+                if(dt=='6'||dt=='7'){
+                    return false;
+                }
+                //判断当前时间是否在9:30-11:30, 13:00-15:00
+                var h = date.getHours();
+                var mi = date.getMinutes();
+                var s = date.getSeconds();
+                if(h < 10){
+                    h = "0" + h;
+                }
+                if(mi < 10){
+                    mi = "0"+ mi;
+                }
+                if(s < 10){
+                    s = "0" + s;
+                }
+                var curTime = h + ":" + mi + ":" + s;
+                if( (curTime >= "09:30:00" && curTime <= "11:30:00") || (curTime >= "13:00:00" && curTime <= "15:00:00" )){
+                    return true;
+                }
+                return false;
+            }
+
+			//上证指数
+			var time_one;
+			var time_two;
+			$("#shanghai").click(function(){
+                $(this).addClass("current");
+                $("#sh_con").show();
+                $("#sz_con").hide();
+                $(this).siblings().removeClass("current");
+                if(!isTradingTime()){ // 如果不在交易时间就不必刷新数据
+                    $.ajax({
+                        type: "post",
+                        url: "{:url('index/index/stock_information_index_sh')}",
+                        dataType: 'json',
+                        data:{'code':'000001'},
+                        success: function(data) {
+                            console.log(data);
+                            $('.sznum').html(data.data.stock_num_info_arr[1]);
+                            $('.szup').html(data.data.stock_num_info_arr[2]);
+                            $('.szdown').html(data.data.stock_num_info_arr[3]);
+                            $('.today_open').html(data.data.info_arr[5]); //今开
+                            $('.volume').html(data.data.info_arr[6]); //成交量
+                            $('.amplitude').html(data.data.info_arr[43]);//振幅
+                            $('.highest').html(data.data.info_arr[41]);//最高
+                            $('.turnover').html(data.data.info_arr[37]);//成交额
+                            $('.yesterday_closed').html(data.data.info_arr[4]);//昨收
+                            $('.total_value').html(data.data.info_arr[45]);//总市值
+                            //领涨板块
+                            $('.brokers_up').html('+1.32%');//券商
+                            $('.environmental_up').html('+0.17%');//环保行业
+                            $('.second_up').html('+0.12%');//次新股
+                            $('.wine_up').html('+0.12%');//酿酒行业
+                            //领跌板块
+                            $('.brokers_down').html('-2.36%');//券商
+                            $('.environmental_down').html('-2.28%');//环保行业
+                            $('.second_down').html('-2.10%');//次新股
+                            $('.wine_down').html('-2.10%');//酿酒行业
+                        },
+                        error: function(data) {
+                            console.log("错误");
+                        }
+                    });
+                    return ;
+                }
+                    clearInterval(time_one);
+                    clearInterval(time_two);
+                    time_one= setInterval(function() {
+                        $.ajax({
+                            type: "post",
+                            url: "{:url('index/index/stock_information_index_sh')}",
+                            dataType: 'json',
+                            data:{'code':'000001'},
+                            success: function(data) {
+                                console.log(data);
+                                $('.sznum').html(data.data.stock_num_info_arr[1]);
+                                $('.szup').html(data.data.stock_num_info_arr[2]);
+                                $('.szdown').html(data.data.stock_num_info_arr[3]);
+                                $('.today_open').html(data.data.info_arr[5]); //今开
+                                $('.volume').html(data.data.info_arr[6]); //成交量
+                                $('.amplitude').html(data.data.info_arr[43]);//振幅
+                                $('.highest').html(data.data.info_arr[41]);//最高
+                                $('.turnover').html(data.data.info_arr[37]);//成交额
+                                $('.yesterday_closed').html(data.data.info_arr[4]);//昨收
+                                $('.total_value').html(data.data.info_arr[45]);//总市值
+                                //领涨板块
+                                $('.brokers_up').html('+1.32%');//券商
+                                $('.environmental_up').html('+0.17%');//环保行业
+                                $('.second_up').html('+0.12%');//次新股
+                                $('.wine_up').html('+0.12%');//酿酒行业
+                                //领跌板块
+                                $('.brokers_down').html('-2.36%');//券商
+                                $('.environmental_down').html('-2.28%');//环保行业
+                                $('.second_down').html('-2.10%');//次新股
+                                $('.wine_down').html('-2.10%');//酿酒行业
+                            },
+                            error: function(data) {
+                                console.log("错误");
+                            }
+                        });
+
+                    }, 1000);
+			});
+            $("#shanghai").click();
+			//深证指数
+			$("#shengzhen").click(function(){
+                $(this).addClass("current");
+                $(this).siblings().removeClass("current");
+                $("#sz_con").show()
+                $("#sh_con").hide();
+                if(!isTradingTime()||!stopShare){ // 如果不在交易时间就不必刷新数据
+                    $.ajax({
+                        type: "post",
+                        url: "{:url('index/index/stock_information_index_sz')}",
+                        dataType: 'json',
+                        data:{'code':'399001'},
+                        success: function(data) {
+                            console.log(data);
+                            $('.sznum').html(data.data.stock_num_info_arr[1]);
+                            $('.szup').html(data.data.stock_num_info_arr[2]);
+                            $('.szdown').html(data.data.stock_num_info_arr[3]);
+                            $('.today_open').html(data.data.info_arr[5]); //今开
+                            $('.volume').html(data.data.info_arr[6]); //成交量
+                            $('.amplitude').html(data.data.info_arr[43]);//振幅
+                            $('.highest').html(data.data.info_arr[41]);//最高
+                            $('.turnover').html(data.data.info_arr[37]);//成交额
+                            $('.yesterday_closed').html(data.data.info_arr[4]);//昨收
+
+                            $('.total_value').html(data.data.info_arr[45]);//总市值
+
+                            //领涨板块
+                            $('.brokers_up').html('+1.32%');//券商
+                            $('.environmental_up').html('+0.17%');//环保行业
+                            $('.second_up').html('+0.12%');//次新股
+                            $('.wine_up').html('+0.12%');//酿酒行业
+
+                            //领跌板块
+                            $('.brokers_down').html('-2.36%');//券商
+                            $('.environmental_down').html('-2.28%');//环保行业
+                            $('.second_down').html('-2.10%');//次新股
+                            $('.wine_down').html('-2.10%');//酿酒行业
+
+                        },
+                        error: function(data) {
+                            console.log("错误");
+                        }
+                    });
+                    return ;
+                }
+
+                clearInterval(time_one);
+                clearInterval(time_two);
+                 time_two= setInterval(function() {
+                     						$.ajax({
+									type: "post",
+									url: "{:url('index/index/stock_information_index_sz')}",
+									dataType: 'json',
+									data:{'code':'399001'},
+									success: function(data) {
+                                        console.log(data);
+                                        $('.sznum').html(data.data.stock_num_info_arr[1]);
+                                        $('.szup').html(data.data.stock_num_info_arr[2]);
+                                        $('.szdown').html(data.data.stock_num_info_arr[3]);
+                                        $('.today_open').html(data.data.info_arr[5]); //今开
+                                        $('.volume').html(data.data.info_arr[6]); //成交量
+                                        $('.amplitude').html(data.data.info_arr[43]);//振幅
+                                        $('.highest').html(data.data.info_arr[41]);//最高
+                                        $('.turnover').html(data.data.info_arr[37]);//成交额
+                                        $('.yesterday_closed').html(data.data.info_arr[4]);//昨收
+
+                                        $('.total_value').html(data.data.info_arr[45]);//总市值
+
+                                        //领涨板块
+                                        $('.brokers_up').html('+1.32%');//券商
+                                        $('.environmental_up').html('+0.17%');//环保行业
+                                        $('.second_up').html('+0.12%');//次新股
+                                        $('.wine_up').html('+0.12%');//酿酒行业
+
+                                        //领跌板块
+                                        $('.brokers_down').html('-2.36%');//券商
+                                        $('.environmental_down').html('-2.28%');//环保行业
+                                        $('.second_down').html('-2.10%');//次新股
+                                        $('.wine_down').html('-2.10%');//酿酒行业
+
+									},
+									error: function(data) {
+										console.log("错误");
+									}
+								});
+
+                }, 1000);
+
+			});
+			(function() {
+				var  baoshang=$(".baoshang").data("id");
+				if(baoshang==0){
+					$(".baoshang").hide();
+				}
+				if(baoshang==1){
+                    $(".baoshang").show();
+				}
+
+
+// 				else{
+// 					$(".baoshang").show();
+// 				}
+				// 紧急通知传值
+// 						$.ajax({
+// 									type: "post",
+// 									url: "{:url('index/index/pc_broadcast')}",
+// 									dataType: 'json',
+// 									success: function(data) {
+// 									if(data)
+// 									},
+// 									error: function(data) {
+// 										console.log("错误");
+// 									}
+// 								});
+				$.ajax({
+					type: "post",
+					url: "{:url('index/index/pc_broadcast')}",
+					dataType: 'json',
+					success: function(data) {
+						//                console.log(data);
+						//              console.log($(".item a")[0]);
+						var img_car = data.data[0].src;
+						var img_href = data.data[0].href;
+
+						$('.carImg').css('background', 'url(' + '"' + img_car + '"' + ')');
+						$(".item a")[0].href = img_href;
+						var img_href2 = data.data[1].href;
+						var img_car2 = data.data[1].src;
+						$('.carImg2').css('background', 'url(' + '"' + img_car2 + '"' + ')');
+						$(".item a")[1].href = img_href2;
+						var img_href3 = data.data[2].href;
+						var img_car3 = data.data[2].src;
+						$('.carImg3').css('background', 'url(' + '"' + img_car3 + '"' + ')');
+						$(".item a")[2].href = img_href3;
+
+					},
+					error: function(data) {
+						console.log("错误");
+					}
+				});
+				
+			})();
+		</script>
+		<!--局部刷新-->
+		<script type="text/javascript">
+			$(".userMenu").on("click", "li", function() {
+				// 	console.log($(this).children("a"));
+				$(this).children("a").addClass("on")
+				$(this).siblings().children("a").removeClass("on");
+				var sId = $(this).data("id"); //获取data-id的值
+				window.location.hash = sId; //设置锚点
+				loadInner(sId);
+			});
+
+			function loadInner(sId) {
+				var sId = window.location.hash;
+				var pathn, i;
+				switch(sId) {
+					case "#index_informatiom_one":
+						pathn = "index_information.html";
+						i = 0;
+						break;　　　　　　　
+					case "#index_informatiom_two":
+						pathn = "index_information_first.html";
+						i = 1;
+						break;
+					case "#index_informatiom_three":
+						pathn = "index_information_second.html";
+						i = 2;
+						break;　　　　　　
+					default:
+						pathn = "index_information.html";
+						i = 0;
+						break;
+				}
+				$("#content").load(pathn); //加载相对应的内容
+				$(".userMenu li").eq(i).addClass("current").siblings().removeClass("current"); //当前列表高亮
+			}
+			var sId = window.location.hash;
+			loadInner(sId);
+		</script>
+
+	
+
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f571b55302a951627ab98145b99cdaab";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	<!--资讯点击进去传ID给后台进入详情页面-->
+		<script >
+            $(".bd_cid").click(function () {
+                var article_id = $(this).data("id");
+                var article_ids = article_id.split('_')[2];
+                $.ajax({
+                    type:'POST',
+                    url:'{:url("index/index/new_id")}',
+                    dataType: 'json',
+                    data:{
+                        "article_id":article_ids
+                    },
+                    success: function(data){
+                        console.log(data);
+                        window.location.href="./news_t";
+                    },
+                    error:function(data) {
+                        console.log("获取失败");
+                    },
+                });
+
+            });
+		</script>
+		<!--网站公告进去传ID给后台进入详情页面-->
+		<script >
+            $(".bd_cids").click(function () {
+                var article_id = $(this).data("id");
+                var article_ids = article_id.split('_')[2];
+                $.ajax({
+                    type:'POST',
+                    url:'{:url("index/index/notice_id")}',
+                    dataType: 'json',
+                    data:{
+                        "article_id":article_ids
+                    },
+                    success: function(data){
+                        console.log(data);
+                        window.location.href="./notice_t";
+                    },
+                    error:function(data) {
+                        console.log("获取失败");
+                    },
+                });
+
+            });
+		</script>
+
+
+
+</body>
+</html>

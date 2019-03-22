@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>尚牛在线</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="./public/static/home/css/mui.min.css" rel="stylesheet" />
+		<link href="./public/static/home/css/moblie/login.css" rel="stylesheet" />
+	</head>
+<!--找回密码-->
+	<body class="forgot_body reg_body">
+		<!--标题-->
+		<header class="ml_header mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">忘记密码</h1>
+		</header>
+		<!--主体-->
+		<div class="mui-content">
+		    <form class="forgot_form reg_form login_form mui-input-group" action="{:url('index/index/updateNewPwd')}" method="post">
+			    <div class="mui-input-row">
+			        <input type="text" id="mobileno" name="mobile" class="mui-input-clear" placeholder="请输入您的手机号">
+			    </div>
+			    <div class="mobilenoCode_row mui-input-row">
+			        <input id="mobilenoCode" type="text" name="yzm" class="mui-input-clear" placeholder="请输入验证码">
+			        <a id="mobileno_code_a" href="javascript:yzm();">获取验证码</a>
+			    </div>
+			    <div class="mui-input-row">
+			        <input id="pwd" type="password" name="login_pwd" class="mui-input-clear" placeholder="请输入密码">
+			    </div>
+			    <button type="submit" id="forgotPass_btn" class="ml_btn mui-btn mui-btn-block">确&nbsp;定</button>
+			</form>
+		</div>
+		
+		
+		
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="./public/static/home/js/moblie/mui.min.js"></script>
+		<!--<script src="./public/static/home/js/moblie/forgot_moile.js"></script>-->
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			})
+			forgot_moile.init()
+		</script>
+		<!--这个是a标签-->
+		<script>
+            function buttonCountdown($el, msNum, timeFormat) {
+                var text = $el.data("text") || $el.text(),
+                    timer = 0;
+                $el.prop("href", 'javascript:void(0);')
+                    .on("bc.clear", function () {
+                        clearTime();
+                    });
+
+                (function countdown() {
+                    var time = showTime(msNum)[timeFormat];
+                    $el.text(time + '后失效');
+                    if (msNum <= 0) {
+                        msNum = 0;
+                        clearTime();
+                        $el.prop('href', 'javascript:yzm();');
+                    } else {
+                        msNum -= 1000;
+                        timer = setTimeout(arguments.callee, 1000);
+                    }
+                })();
+
+                function clearTime() {
+                    clearTimeout(timer);
+                    $el.prop("disabled", false).removeClass("disabled").text(text);
+                }
+
+                function showTime(ms) {
+                    var d = Math.floor(ms / 1000 / 60 / 60 / 24),
+                        h = Math.floor(ms / 1000 / 60 / 60 % 24),
+                        m = Math.floor(ms / 1000 / 60 % 60),
+                        s = Math.floor(ms / 1000 % 60),
+                        ss = Math.floor(ms / 1000);
+
+                    return {
+                        d: d + "天",
+                        h: h + "小时",
+                        m: m + "分",
+                        ss: ss + "秒",
+                        "d:h:m:s": d + "天" + h + "小时" + m + "分" + s + "秒",
+                        "h:m:s": h + "小时" + m + "分" + s + "秒",
+                        "m:s": m + "分" + s + "秒"
+                    };
+                }
+                return this;
+            }
+
+            function yzm() {
+                var mobile = $("#mobileno").val();
+                $.ajax({
+                    url:"{:url('index/index/sendMobileCodeByPassWord')}",
+                    type:"POST", //GET
+                    async:false, //或true，异步请求
+                    timeout:5000,
+                    data:{'mobile':mobile},
+                    dataType:"json",
+                    success:function(data){
+                        console.log(data);
+                        if(data.code ==0){
+                            mui.alert(data.msg);
+                        }
+                        if(data.status==1){
+                            // alert("发送成功,请留意短信")
+                            buttonCountdown($('#mobileno_code_a'),1000 * 60 * 1, "ss");
+                        }
+
+
+                    },
+                    error:function () {
+                        console.log("错误");
+                    }
+                })
+            }
+		</script>
+	</body>
+</html>

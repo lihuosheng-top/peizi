@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>尚牛在线</title>
+    <style>
+        .pic{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .wp{
+            padding: 50px;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+        .wp dt, .wp dd {
+            margin-bottom: 15px;
+        }
+        .wp dl {
+            margin-bottom: 50px;
+        }
+        .wp dd {
+            padding-left: 50px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/home/css/buy.css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/home/css/help.css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/home/css/common.css"/>
+</head>
+<body class="help_body helpcenter logged-in">
+<!--{include file="public:top" /}-->
+<header class="ml_header br-w100">
+    <div class="h_top br-w100">
+        <div class="w1024 br-clearfix">
+            <div class="h_topL br-fl">
+                服务热线：{$phone}
+            </div>
+            {if !empty($_SESSION['member'])}
+            <div   style="text-align: right;" >
+                {if !empty($_SESSION['member']['username'])}
+                用户：{$_SESSION['member']['username']}
+                {else if}
+                用户信息：{$_SESSION['member']['mobile']}
+                {/if}
+                <span class="loginout"><a href="{:url('index/index/logout')}">退出登录</a></span>
+            </div>
+            {/if}
+
+
+            <!-- <div id="page_shared_layout_login" class="h_topR br-fr" {if condition="$_SESSION['member'] neq '' "} style="display: none;" {/if} >
+                 <a class="login" href="javascript:void(0);">登录</a>
+                 <a class="register" href="./reg.html">注册</a>
+             </div>
+
+             <ul id="page_shared_layout_unlogin" class="top-links f-right" {if condition="$_SESSION['member'] eq '' "} style="display: none;" {/if}>
+             <li class="show-logout" style="display: list-item;"><a href="javascript:_hmt.push(['_trackEvent', 'login', 'click', 'head-login',1]);" name="popup-user-login-click">登录</a></li>
+             <li class="show-logout sep" style="display: list-item;">|</li>
+             <li class="show-logout" style="display: list-item;"><a href="/user/reg">注册</a></li>
+             <li class="show-login" style="display: block;">您好，&nbsp;</li>
+             <li class="show-login top-user-wrapper" style="display: block;">
+                     <span class="top-username">
+                         <a id="page_shared_layout_login_name" href="./ucenter/index">{$_SESSION['member']['username']}</a>
+                         <i class="icon icon-arrow-drop-down"></i>
+                     </span>
+                 <div class="overlay-account">
+                     <div class="group account-group">
+                         <span class="f-left">可用<b class="account-val" id="shared_header_mb">{$usableSum}</b></span>
+                         <a name="realnameAuth" class="f-right" href="./ucenter/payment.html">充值</a>
+                     </div>
+                     <div class="account-links group">
+                         <a class="f-left" href="./ucenter/index.html">个人中心</a>
+                         <span class="f-left sep">|</span>
+
+
+                         <a class="f-right js-logout" href="{:url('index/index/logout')}">安全退出</a>
+                     </div>
+                 </div>
+                 /.overlay-account
+             </li>
+             </ul>-->
+        </div>
+    </div>
+    <div class="h_bot br-w100">
+        <div class="w1024 br-clearfix">
+            <div class="h_botL br-fl">
+                <a href="/"><img src="__STATIC__/home/img/moblie/fcml2.png" style="height:80px; " /></a>
+            </div>
+            <div class="h_botR br-fr">
+                <ul class="br-clearfix" id="menu-ul">
+                    <!--<li class="br-fl"><a href="{:url('index')}" class="active">首页</a></li>-->
+                    <li class="br-fl"><a href="./index.html">首页</a></li>
+                    <!-- <li class="br-fl"><a href="./buy2.html">A股点买</a></li>
+                     <li class="br-fl"><a href="./freetrial2.html">免费体验</a></li>-->
+                    <li class="br-fl"><a href="./safeensure.html" >安全保障</a></li>
+                    <li class="br-fl help_box">
+                        <a href="./guild.html" class="active">帮助中心</a>
+                        <ul class="new-sub-nav hide">
+                            <li class=""><a href="./guild.html">新手教学</a></li>
+                            <li class=""><a href="./help.html">常见问题</a></li>
+                        </ul>
+                    </li>
+                    <li class="br-fl"><a href="./buy.html">A股点买</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<!--帮助区-常见问题-->
+<div class="br-content">
+<div class="w1024 wp">
+    <div class="pic"><img src="public/static/home/img/two.jpg" ></div>
+    <dl>
+        <dt>如何注册成为尚牛在线会员</dt>
+        <dd>您可以通过手机号注册尚牛在线会员，请使用本人手机号进行注册，以便尚牛在线能更好的联系您。
+            只有注册成为尚牛在线会员并成功认证，才能进行配资资金申请。</dd>
+        <dd>手机注册：</dd>
+        <dd>输入您的常用手机号，获取短信验证码，输入验证码和登录密码就可以注册成功。
+            注册成功您可以直接选择进行实名认证或银行卡认证。</dd>
+    </dl>
+    <dl>
+        <dt>如何绑定银行卡</dt>
+        <dd>尚牛在线需要您提供合法可用的本人银行卡作为保证金和收益提取的转账卡。确保后续您的收益能及时转入到您的卡中，请准确填写卡相关信息。</dd>
+        <dd>点击登陆 >我的账户> 银行卡管理 > 添加银行卡，按照要求填写相关信息。</dd>
+    </dl>
+    <dl>
+        <dt>修改密码</dt>
+        <dd>为了您的在尚牛在线的账户安全，请不定期修改登录密码。</dd>
+    </dl>
+    <dl>
+        <dt>密码忘记怎么办</dt>
+        <dd>如果您忘记登录密码，请不要担心。尚牛在线将为您提供手机方式找回密码。
+            请输入您的注册手机号，获取到校验码后您可以进行密码的设置。</dd>
+    </dl>
+</div>
+</div>
+
+<div class="popup" id="popup-id-verify">
+    <div class="popup-header group">
+        <h2>认证银行卡</h2>
+        <a href="javascript:;" class="js-close-popup"><i class="icon icon-close"></i></a>
+    </div>
+    <div class="popup-body group">
+        <div class="field-row group" style="text-align:center">
+            <ol class="popup-note">
+                <li style="text-align:left;">提现和免费体验前必须先绑定一张银行卡</li>
+                <li style="text-align:left;">请务必认真填写真实资料</li>
+                <li style="text-align:left;">银行卡采用实名认证，一个身份证只能绑定一个账号</li>
+                <li style="text-align:left;">如遇到问题，请联系客服 <label id="m_basic_mobile">4001665652</label></li>
+            </ol>
+            <p>为了保障您的账户安全，请先绑定银行卡</p>
+        </div>
+        <div class="btn-row group">
+            <a class="btn btn-pri" href="/ucenter/bankCards.html">去绑定</a>
+            <a class="btn btn-pri js-close-popup" href="javascript:;">暂不绑定</a>
+        </div>
+    </div>
+</div>
+<div class="popup" id="popup-realname-auth">
+    <div class="popup-header group">
+        <h2>实名认证</h2>
+        <a href="javascript:;" class="js-close-popup"><i class="icon icon-close"></i></a>
+    </div>
+    <div class="popup-body group">
+        <div class="field-row group" style="text-align:center">
+            <ol class="popup-note">
+                <li style="text-align:left;">一个身份证对应一个账号</li>
+                
+                <li style="text-align:left;">如遇到问题，请联系客服 <label id="m_basic_mobile">4001665652</label></li>
+            </ol>
+            <p>为了保障您的账户安全，请先进行实名认证</p>
+        </div>
+        <div class="field-row group">
+            <label>真实姓名：</label>
+            <div class="field-val"><input id="姓名i" type="text" class="text" onchange="user_updateid_zsxm_valid()"></div>
+        </div>
+        <div id="zsxm_err1" class="error-wrapper" style="margin-left:100px; display:none"><div><i class="icon icon-x-altx-alt"></i>未填写姓名</div></div>
+        <div class="field-row group">
+            <label>身份证号：</label>
+            <div class="field-val">
+                <div class="field-val">
+                    <input id="身份证i" type="text" class="text" onchange="user_updateid_sfzh_valid()">
+                </div>
+            </div>
+        </div>
+        <div id="sfzh_err1" class="error-wrapper" style="margin-left:100px; display:none"><div><i class="icon icon-x-altx-alt"></i>请填写准确的身份证</div></div>
+        <div class="btn-row group">
+            <a id="user_UpdateSelfIdA" class="btn btn-pri" href="javascript:void(0)">确认</a>
+            <a class="btn btn-sec js-close-popup" href="javascript:;">取消</a>
+        </div>
+    </div>
+</div>
+
+
+
+{include file="public:footer" /}
+<script src="./public/static/home/js/help.js"></script>
+</body>
+</html>

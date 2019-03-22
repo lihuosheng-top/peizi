@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+
+		<link href="__STATIC__/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/css/index.css" />
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/css/buy.css" />
+		<link rel="stylesheet" type="text/css" href="__STATIC__/home/css/index_information.css" />
+		<style>
+			.titles{
+				text-align: center !important;
+			}
+		</style>
+	</head>
+	<body>
+		{include file="public:top" /}
+		<div id="" style="margin-top: 200px; ">
+
+			<table style="margin: 100px auto; ">
+				<tr>
+					<td height="50" align="center" valign="middle" style="font-size:24px; color:#666;" class="title titles" title=""></td>
+
+				</tr>
+				<tr>
+					<td height="50" align="center" valign="middle" style="border-bottom:1px solid #dedede; text-align: center;" class="time"></td>
+				</tr>
+				<tr style="display: block;margin: 0 auto;width: 60%">
+					<td class="content">
+
+					</td>
+				</tr>
+				<tr>
+				
+				</tr>
+			</table>
+		</div>
+		{include file="public:PcPublicFoot" /}
+		<script src="./public/static/libs/jquery-2.2.0/jquery-2.2.0.min.js"></script>
+		<script src="./public/static/home/js/moblie/mui.min.js"></script>
+		<script src="./public/static/home/js/moblie/reg.js"></script>
+		<script>
+			$.ajax({
+				type: 'POST',
+				url: '{:url("index/index/news_t")}',
+				dataType: 'json',
+				success: function(data) {
+					console.log(data);
+					// console.log(data.data.title);
+					           $(".title").html(data.data.title);
+					           $(".time").html(data.data.createTime);
+					           $(".content").html(data.data.content);
+				},
+				error: function(data) {
+					console.log("失败");
+				},
+			});
+		</script>
+	</body>
+</html>

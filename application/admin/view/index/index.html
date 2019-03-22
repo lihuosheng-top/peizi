@@ -1,0 +1,78 @@
+{extend name="layout" /}
+
+{block name="page-header"}{/block}
+
+{block name="content"}
+    {php} echo "尚牛在线";
+		    
+		{/php}
+		
+{/block}
+
+{block name="script"}
+
+<script>
+    //自调用获取申请或者提现提示音
+
+    $(document).ready(function(){
+        //循环执行，每隔1秒钟执行一次 1000
+        var t1=setInterval(function(){
+            refreshCount()
+        }, 6000);
+
+        function refreshCount() {
+//      
+            $.ajax({
+                    type: 'POST',
+                    url: "{:url('admin/index/informationhint')}",
+                    data: {},
+                    dataType: 'json',
+                    success: function (data) {
+                        if(data.data.czsq==6){
+                            console.log(data);
+                            ring();
+                            $.ajax({
+                                type: 'POST',
+                                url: "{:url('admin/index/setInformationHint')}",
+                                data: {"name":"wxcz"},
+                                dataType: 'json',
+                                async: true,
+                                success: function (data) {
+                                },
+                                error: function () {
+                                    console.log('失败')
+                                }
+                            });
+                        }
+
+                    },
+                    error: function () {
+                            console.log('失败')
+                    }
+            })
+        }
+    });
+
+    function times(){
+        var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', '__STATIC__/admin/music/10727.mp3');
+		audioElement.setAttribute('autoplay', 'autoplay'); //打开自动播放
+			setTimeout(function(){ 
+								audioElement.pause();
+								
+							},5000);
+									
+
+    }
+	function ring(){
+		times() ;
+		 var t2=setInterval(function(){
+		           times() 
+		        }, 10000);
+		  
+		setTimeout(function(){ 
+				clearInterval(t2);			
+						},60000);
+	}
+</script>
+{/block}

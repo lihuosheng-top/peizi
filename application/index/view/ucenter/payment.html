@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>尚牛在线</title>
+</head>
+<body class="membercenter logged-in">
+{include file="public:top" /}
+<link rel="stylesheet" type="text/css" href="__STATIC__/home/css/buy.css"/>
+<link rel="stylesheet" type="text/css" href="__STATIC__/home/css/member.css"/>
+
+	<style type="text/css">/*offline-wrap*/
+
+.offline-wrap {
+	margin-left: 15px;
+	font-size: 14px;
+	background-color: #fff;
+}
+
+.offline-wrap input {
+	border: none;
+}
+
+.offline-wrap .each-line {
+	color: #333;
+	padding: 15px;
+	padding-left: 0;
+	border-bottom: 1px solid #E5E5E5;
+}
+
+.offline-wrap .each-line li {
+	float: left;
+	width: 50%;
+}
+
+.offline-wrap .each-line li input {
+	text-align: right;
+	width: 100%;
+}
+
+.offline-wrap .each-line span.tip {
+	font-size: 12px;
+	color: #E5E5E5;
+}
+
+.offline-wrap .each-line .zz-tip {
+	padding-bottom: 7px;
+}
+
+.offline-wrap .zzpz-tip {
+	padding: 30px;
+	text-align: center;
+	color: #3483E9;
+}
+
+.offline-wrap .zzpz-tip .offline-form {
+	position: relative;
+	display: block;
+	width: 133px;
+	height: 40px;
+	top: -25px;
+	margin: auto auto;
+	background-color: transparent;
+	font-size: 0;
+}
+
+.offline-wrap .zzpz-tip .offline-form input {
+	line-height: normal;
+	width: 133px;
+	height: 40px;
+	display: inline-block;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.select-options {
+	float: right;
+}
+
+.select-options select {
+	-webkit-appearance: none;
+	border: none;
+	direction: rtl;
+}
+
+.offline-pic {
+	margin-top: 15px;
+}
+
+.offline-pic img.delete {
+	width: 20px;
+	top: -10px;
+	position: relative;
+	left: 114px;
+	float: left;
+}
+
+.offline-pic #cId img {
+	width: 100px;
+}
+
+.offline-tip {
+	margin: 15px 15px 55px 15px;
+	color: #999;
+	font-size: 12px;
+}
+
+.offline-kf {
+	text-align: center;
+	margin-top: 20px;
+	color: #333;
+	font-size: 14px;
+}
+
+.offline-kf a {
+	color: #3483E9;
+}
+
+.tab-item {
+	width: 50%;
+	margin: 10px auto;
+	border: solid #EFEFF4 3px;
+}
+
+.btn-full {
+	height: 48px;
+	line-height: 48px;
+	width: 90%;
+	color: #FFF;
+	font-size: 18px;
+	text-decoration: none;
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+	border: none;
+	border-radius: 7px;
+}
+
+.btn-orange {
+	background: #FF8C19;
+}
+
+.form-list li span {
+	display: inline-block;
+	color: #333;
+	font-size: 14px;
+}
+
+.form-list li input {
+	display: inline-block;
+	color: #333;
+	font-size: 14px;
+	height: 36px;
+}
+
+.form-list li .title {
+	width: 22%;
+	text-align: right;
+}
+
+.form-list li .content {
+	width: 60%;
+}
+
+#submit{
+	margin-top: 20px;
+	width: 100px;
+	height: 50px;
+	color: #fff;
+	border: 1px solid #007aff;
+	background-color: #007aff;
+}
+
+#wxsubmit {
+	margin-top: 20px;
+	width: 100px;
+	height: 50px;
+	color: #fff;
+	border: 1px solid #007aff;
+	background-color: #007aff;
+}
+
+.re_p {
+	margin-bottom: 20px;
+	margin-top: 5px;
+	color: #8f8f94;
+	text-align: center;
+}
+
+.font12 {
+	font-size: 12px;
+}
+
+.color_red {
+	color: #e60012;
+}
+
+.wx_p1 {
+	padding-top: 20px;
+	margin-bottom: 25px;
+}
+
+p {
+	font-size: 14px;
+	margin-top: 0;
+	margin-bottom: 10px;
+	color: #8f8f94;
+	text-align: center;
+}
+
+.wx_img {
+	width: 150px;
+	margin: 0 auto;
+	display: block;
+	}
+
+</style>
+
+<!--个人中心-充值-->
+<div class="br-content">
+<div class="w1200">
+	<!--主体-->
+<section class="page-main page-personal">
+    <div class="container clearfix">
+    	<!--public左边-->
+    	{include file="public:member_left" /}
+        <!--右边-->
+<div id="page_member_payment" class="col-main page-member-payment">
+    <div class="tabs-wrapper" id="pay-method-tabs">
+        <nav>
+            <ul class="clearfix">
+                <li class="active"><a href="javascript:;" id="pm4">银行转账</a></li>
+                <li><a href="javascript:;" id="pm3">支付宝转账</a></li>
+                <li><a href="javascript:;" id="pm2">微信转账</a></li>
+            </ul>
+        </nav>
+        <div class="tabs">
+            
+            
+            <div class="tab-item hide" id="tab-pm3">
+              <div class="mui-content">
+		    <div class="pay_title">第一步：请复制或牢记我们的支付宝账号</div>
+		  
+				<section>
+					<div style="width: 70%; margin: 0 auto;">
+					<img src="__STATIC__/home/img/moblie/Apay1.jpg" alt="" width="100%">
+					</div>
+			
+						<p style="text-align: center; color: #333;">（或选择）
+							<br>
+							支付宝财务代收款账号：13013462819     罗蓉</p>
+					
+				</section>
+
+				<ul class="form-list" style="margin-top: 20px;">
+					<li>
+						<span class="title">金额:</span>
+						<span class="content"><input type="text" name="amount" id="amount" value=""></span>
+					</li>
+					<li>
+						<span class="title" style="vertical-align: 40px;">说明:</span>
+						<span class="content"><textarea rows="2" cols="20" name="instructions" id="instructions" style="border: solid 1px #A9A9A9;"></textarea></span>
+					</li>
+					<li>
+						 <span class="title">支付宝账号:</span>
+						 <span class="content"><input type="text" name="alipay" id="alipay" value=""></span>
+					</li>
+				</ul>
+				<!-- <div class="upload_img">
+                    <p>截图凭证：</p>
+                    <ul>
+                        <li class="upload_input">
+                            <a href="javascript:;">
+                                <img src="/feichangcelue/public/static/index/image/icon-cam.png">
+                            </a>
+                            <input type="file" id="myfile" enctype="multipart/form-data"  multiple accept="image/jpeg, image/jpg, image/png" name="credentials">
+                        </li>
+                    </ul>
+                </div> -->
+				<div class="buts" style="text-align: center;">
+					<input type="button" value="确认提交" id="submit">
+				</div>
+
+
+
+			 <!--<div class="pay_title">第二步：手机打开支付宝，快速转账</div>-->
+		    <!--<section class="sec2 bg_fff">-->
+		    	<!--<img src="../public/static/home/img/moblie/ali-pay.png"/>-->
+		    <!--</section>-->
+		    <!--<p class="over_p mui-text-center bg_fff">完成后，请到个人中心查看<a href="../ucenter/home.html">账户余额</a></p>-->
+			<!--<a type="button" class="ml_btn mui-btn mui-btn-block" href="https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FsaId%3D10000007%26clientVersion%3D3.7.0.0718%26qrcode%3Dhttps%253A%252F%252Fqr.alipay.com%252Fa6x061714walnkq3lfptl18%253F_s%253Dweb-other">去转账</a>-->
+
+			<p class="mui-text-center font12 re_p">请在上方填写对应的凭证</p>
+			<p class="mui-text-center re_p">到账时间</p>
+			<p class="mui-text-center re_p ">08：45-17:00（30分钟内到账） 17:00以后（次日09:30到账）<br> 如急需到账，请电话 <a href="javascript:void(0);" target="_blank">联系客服</a></p>
+		
+		
+		
+		
+		</div>
+            </div>
+            <!--/.tab-item -->
+            <div class="tab-item hide" id="tab-pm2">
+            	<div class="mui-content">
+		  <div class="wx_top">
+		  	<p class="color_red wx_p">请扫码充值，并务必在转账备注中填写注册手机号 这样方便我们多重信息确认你的汇款</p>
+		  	<!--<img class="wx_img" src="/feichangcelue/public/static/home/img/wxpay.png"/>-->
+		  	<img class="wx_img" src="__STATIC__/home/img/wxpay3.png">
+		  	<p class="wx_p">请用微信扫描二维码</p>
+		  	<!--<p class="wx_p3" style="color: #e60012">因对公帐户核对帐目，现由子公司代收，给您造成不便 我们深表谦意！如您需要其他支付方式请联系在线客服，谢谢！</p>-->
+		  	<p class="wx_p">转账成功后，请在下方填写对应的凭证，请拨打客服热线4001665652以便我们及时帮您处理</p>
+			<!--<p class="wx_p3">账户：赵金霞</p>-->
+			<div class="ball ball_l"></div>
+			<div class="ball ball_r"></div>
+			<!--<form action="aaa" method="post">-->
+				<ul class="form-list">
+					<li>
+						<span class="title">金额:</span>
+						<span class="content"><input type="text" name="amount" id="wxamount" value=""></span>
+					</li>
+					<li>
+						<span class="title" style="vertical-align: 40px;">说明:</span>
+						<span class="content"><textarea rows="2" cols="20" name="instructions" id="wxinstructions" style="border: solid 1px #a9a9a9;"></textarea></span>
+					</li>
+					<li>
+						<span class="title">微信号:</span>
+						<span class="content"><input type="text" name="alipay" id="wxalipay" value=""></span>
+					</li>
+				</ul>
+				<!-- <div class="upload_img">
+					<p>截图凭证：</p>
+					<ul>
+						<li class="upload_input">
+							<a href="javascript:;">
+								<img src="/feichangcelue/public/static/index/image/icon-cam.png">
+							</a>
+							<input type="file" id="myfile" enctype="multipart/form-data"  multiple accept="image/jpeg, image/jpg, image/png" name="credentials">
+						</li>
+					</ul>
+				</div> -->
+				<div class="buts" style="text-align: center;">
+					<input type="button" value="确认提交" id="wxsubmit">
+				</div>
+				
+			</for/m>
+		  </div>
+			
+		</div>
+               </div>
+            <!--/.tab-item -->
+            <div class="tab-item " id="tab-pm4">
+             <form action="bbb" id="payForm" >
+                    
+					<input type="hidden" value="1" name="pay_type">
+				<div style="background-color:#fff">
+					<div class="offline-wrap">
+						<ul class="each-line clearfix">
+							<li style="    width: 100%;"> 你可以通过网上银行、银行柜台、ATM等方式向转账 <span style="color: #f70909;">(提示：必须先转账 后填写此凭证提交)</span></li>
+						</ul>
+					
+
+						<ul class="each-line clearfix">
+							<li style="width: 100%;">
+								<span style="color: red;">
+									<!--因对公帐户对帐，目前由财务代入款，给您造成不便抱歉！建设银行帐户：6236683200000984199姓名：梁欣茵，如您需要其他支付方式请联系在线客服，谢谢！-->
+									<!--因对公帐户核对帐目，现由子公司代收，给您造成不便 我们深表谦意!-->
+									<br>
+									入款帐户：755928537410701
+									<br>
+									单位名称：深圳市尚美时尚产业投资管理有限公司
+									<br>
+									开 户 行：招商银行股份有限公司深圳中心城支行
+
+
+								</span>
+							</li>
+						</ul>
+
+						<ul class="each-line clearfix">
+							<li>
+								<span>建设银行财务帐户帐号：</span>
+							</li>
+							<li>
+								<span style="color: red;float: right">6236 6832 0000 0984 199</span>
+							</li>
+						</ul>
+
+						<ul class="each-line clearfix">
+							<li>
+								<span>账户名称：</span>
+							</li>
+							<li>
+								<span style="color: red;float: right">梁欣茵</span>
+							</li>
+						</ul>
+
+
+
+
+
+	<ul class="each-line clearfix">
+							<li>
+								<span>充值金额</span>
+							</li>
+							<li>
+								<input type="number" placeholder="请输入充值金额" id="paymoney" name="pay_money">
+							</li>
+						</ul>
+						<ul class="each-line clearfix">
+							<li>
+								<span>我的充值银行卡号：</span>
+							</li>
+							<li>
+								<input type="text" value="" placeholder="请填写充值的银行卡号进行核对" id="bank_num" name="bank_num">
+							</li>
+						</ul>
+
+						<ul class="each-line clearfix">
+							<li>
+								<span>转账备注</span>
+							</li>
+							<li>
+								<input type="text" value="本人确认该笔款项用于股票配资之用" placeholder="本人确认该笔款项用于股票配资之用" id="remark" name="remark">
+							</li>
+						</ul>
+
+						<div class="zzpz-tip" id="upbutton">
+							<label>
+                     </label>
+
+						</div>
+
+					</div>
+</div>
+				<div class="recharge-tip">
+				<p>充值后，请在公众号留言或联系充值客服QQ：910705652，我们及时为您充值</p>
+				</div>
+					<div style="width: 100%">
+						<!--<div class="btn-full btn-orange" style="margin-left: 5%;" onclick="charge();" id="on_buton">确认提交</div>-->
+						<input type="button" name="" value="确认提交" class="btn-full btn-orange"  id="on_buton"/>
+					</div>
+
+                    	
+                    </form>
+
+            </div>
+            <!--/.tab-item -->
+            <!--/.tabs-->
+        </div>
+    </div>
+</div>
+
+    </div>
+</section>
+
+
+
+
+
+</div>
+</div>
+
+
+{include file="public:footer" /}
+	<script type="text/javascript">
+		
+			//支付宝提交
+			  $('#submit').click(function() {
+				var amount=$("#amount").val();
+                  if(amount == '' || amount == 0 || amount == null){
+                      alert("请输入充值金额");
+                      return;
+                  }
+				var instructions=$("#instructions").val();
+                  if(instructions =='' ||instructions == 0 || instructions == null){
+                      alert("请输入说明信息");
+                      return;
+                  }
+
+				var alipay=$("#alipay").val();
+                  if(alipay =='' ||alipay == 0 || alipay == null){
+                      alert("请输入使用的支付宝账号");
+                      return;
+                  }
+				$.ajax({
+					type: "post",
+					url: "{:url('index/Ucenter/getInformationAlipay')}",
+					dataType: 'JSON',
+					data:{"amount":amount,"instructions":instructions,"alipay":alipay},
+
+					success: function(data) {
+					    if(data.status ==1){
+                            alert(data.info);
+                            setTimeout(function () {
+                                window.location.href= './index.html';
+                            },2000);
+						}else {
+                            alert('提交失败');
+						}
+
+
+					},
+                    error: function(data) {
+                    }
+				});
+			  });
+//			  微信
+			  
+			$('#wxsubmit').click(function() {
+                          var amount=$("#wxamount").val();
+                          if(amount == '' || amount == 0 || amount == null){
+                              alert("请输入充值金额");
+                              return;
+                          }
+                          var instructions=$("#wxinstructions").val();
+                          if(instructions =='' ||instructions == 0 || instructions == null){
+                              alert("请输入说明信息");
+                              return;
+                          }
+
+                          var alipay=$("#wxalipay").val();
+                          if(alipay =='' ||alipay == 0 || alipay == null){
+                              alert("请输入使用的微信账号");
+                              return;
+                          }
+                          $.ajax({
+                              type: "post",
+                              url: "{:url('index/Ucenter/getInformationWeChat')}",
+                              dataType: 'JSON',
+                              data:{"amount":amount,"instructions":instructions,"alipay":alipay},
+
+                              success: function(data) {
+                                  if(data.status ==1){
+                                      alert(data.info);
+                                      setTimeout(function () {
+                                          window.location.href= './index.html';
+                                      },2000);
+                                  }else {
+                                     alert('提交失败');
+                                  }
+
+
+                              },
+                              error: function(data) {
+                              }
+                          });
+					  });
+
+			$("#on_buton").click(function () {
+                var pay_money = $("#paymoney").val();
+                if(pay_money == '' || pay_money == 0 || pay_money == null){
+                    alert("请输入充值金额");
+                    return;
+                }
+                var beizhu =$('#remark').val();
+                var bank_num =$('#bank_num').val();
+                if(bank_num =='' ||bank_num == 0 || bank_num == null){
+                    alert("请输入充值的银行卡号");
+                    return;
+				}
+
+                $(function(){
+                    $.ajax({
+                        type:"post",
+                        url:"{:url('index/Ucenter/bank_transfer')}",
+                        data:{
+                            'pay_money':pay_money,
+							'beizhu':beizhu,
+							'bank_num':bank_num
+						},
+                        dataType:'json',
+                        success:function(data){
+                            alert(data.msg+'请等待审核');
+                            setTimeout(function () {
+                                window.location.href= './index.html';
+                            },2000);
+                            console.log('成功');
+                        },
+                        error:function (data) {
+                            console.log("错误");
+                        }
+                    })
+                });
+
+            });
+		
+	</script>
+
+</body>
+</html>
